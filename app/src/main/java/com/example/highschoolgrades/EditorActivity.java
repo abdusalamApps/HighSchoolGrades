@@ -15,6 +15,8 @@ public class EditorActivity extends AppCompatActivity {
     private TextView closeTV, deleteButtonTv, confirmButtonTv;
     private AutoCompleteTextInputEditText courseInput;
     private Spinner gradeSpinner, pointsSpinner;
+    private double mGrade = 0;
+    private double mPoints = 0;
 
 
     private void findViews() {
