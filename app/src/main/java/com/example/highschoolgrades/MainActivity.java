@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -26,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
     private FloatingActionButton fab;
+    private MaterialButton comparisonSumBtn;
 
 
     void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
         fab = findViewById(R.id.fab);
+        comparisonSumBtn = findViewById(R.id.comparisonSum_btn);
     }
 
     @Override
@@ -57,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditorActivity.class);
                 startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
+            }
+        });
+
+        comparisonSumBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ResultActivity.class));
             }
         });
     }
