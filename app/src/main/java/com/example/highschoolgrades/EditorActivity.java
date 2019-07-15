@@ -4,7 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -70,6 +72,15 @@ public class EditorActivity extends AppCompatActivity {
             confirmButtonTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent replyIntent = new Intent();
+                    if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
+                        setResult(RESULT_CANCELED, replyIntent);
+                    } else {
+                        replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
+                        replyIntent.putExtra(getString(R.string.grade), mGrade);
+                        replyIntent.putExtra(getString(R.string.points), mPoints);
+                        setResult(RESULT_OK, replyIntent);
+                    }
                     finish();
                 }
             });
