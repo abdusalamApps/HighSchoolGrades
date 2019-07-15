@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -105,5 +106,42 @@ public class EditorActivity extends AppCompatActivity {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, arrayRecourse, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selection = (String) parent.getItemAtPosition(position);
+                switch (spinnerId) {
+                    case R.id.grade_spinner:
+                        if (selection.equals(getString(R.string.grade_a))) {
+                            mGrade = 20.0;
+                        } else if (selection.equals(getString(R.string.grade_b))) {
+                            mGrade = 17.5;
+                        } else if (selection.equals(getString(R.string.grade_c))) {
+                            mGrade = 15.0;
+                        } else if (selection.equals(getString(R.string.grade_d))) {
+                            mGrade = 12.5;
+                        } else if (selection.equals(getString(R.string.grade_e))) {
+                            mGrade = 10.0;
+                        } else if (selection.equals(getString(R.string.grade_f))) {
+                            mGrade = 0.0;
+                        }
+                        break;
+                    case R.id.points_spinner:
+                        if (selection.equals(getString(R.string.points_100))) {
+                            mPoints = 100.0;
+                        } else if (selection.equals(getString(R.string.points_50))) {
+                            mPoints = 50.0;
+                        } else if (selection.equals(getString(R.string.points_150))) {
+                            mPoints = 150.0;
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }
