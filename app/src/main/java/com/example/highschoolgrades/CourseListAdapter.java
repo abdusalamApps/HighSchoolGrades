@@ -46,7 +46,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             } else if (gradeDouble == 15.0) {
                 gradeString = "C";
                 holder.gradeTextView.setBackground(holder.itemView.getContext().getDrawable(R.drawable.rounded_icon_c));
-            } else if (gradeDouble == 12.0) {
+            } else if (gradeDouble == 12.5) {
                 gradeString = "D";
                 holder.gradeTextView.setBackground(holder.itemView.getContext().getDrawable(R.drawable.rounded_icon_d));
             } else if (gradeDouble == 10.0) {
@@ -65,7 +65,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), EditorActivity.class);
-                intent.putExtra("From Item", mCourses.get(position).getCourse());
+                intent.putExtra("CourseId", mCourses.get(position).getId());
+                intent.putExtra("Course", mCourses.get(position).getCourse());
+                intent.putExtra("Grade", mCourses.get(position).getGrade());
+                intent.putExtra("Points", mCourses.get(position).getPoints());
                 Activity context = (Activity) holder.itemView.getContext();
                 context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE);
             }

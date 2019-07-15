@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 public class EditorActivity extends AppCompatActivity {
 
+    private static final String TAG = EditorActivity.class.getCanonicalName();
     private TextView closeTV, deleteButtonTv, confirmButtonTv;
     private AutoCompleteTextInputEditText courseInput;
     private Spinner gradeSpinner, pointsSpinner;
@@ -37,6 +39,9 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         findViews();
+        setupSpinner(R.id.grade_spinner, gradeSpinner);
+        setupSpinner(R.id.points_spinner, pointsSpinner);
+
 
 //        deleteButtonTv.setVisibility(View.GONE);
 
@@ -49,7 +54,7 @@ public class EditorActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     *//* TODO: Push Course back to MainActivity and then delete it from the database
-                     * use startActivityForResults *//*
+         * use startActivityForResults *//*
 //                    Temporarily, only destroy activity
                     AlertDialog alertDialog = new AlertDialog.Builder(EditorActivity.this).create();
                     alertDialog.setTitle("Delete This Course?");
@@ -87,23 +92,57 @@ public class EditorActivity extends AppCompatActivity {
 
         }*/
 
-        
-
-        confirmButtonTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent replyIntent = new Intent();
-                if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
-                    setResult(RESULT_CANCELED, replyIntent);
-                } else {
-                    replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
-                    replyIntent.putExtra(getString(R.string.grade), mGrade);
-                    replyIntent.putExtra(getString(R.string.points), mPoints);
-                    setResult(RESULT_OK, replyIntent);
-                }
-                finish();
+//        if we are coming from an existing item then put course name the existing course name
+        if (getIntent().hasExtra("CourseId")) {
+            courseInput.setText(getIntent().getStringExtra("Course"));
+//            Figuring out the grade and selecting the right option on gradeSpinner
+            double grade = getIntent().getDoubleExtra("Grade", 0);
+            if (grade == 20.0) {
+                gradeSpinner.setSelection(0);
+            } else if (grade == 17.5) {
+                gradeSpinner.setSelection(1);
+            } else if (grade == 15.0) {
+                gradeSpinner.setSelection(2);
+            } else if (grade == 12.5) {
+                gradeSpinner.setSelection(3);
+            } else if (grade == 10.0) {
+                gradeSpinner.setSelection(4);
+            } else {
+                gradeSpinner.setSelection(5);
             }
-        });
+
+//            Figuring out the points and selecting the right option on pointsSpinner
+            double points = getIntent().getDoubleExtra("Points", 0);
+            if (points == 100.0) {
+                pointsSpinner.setSelection(0);
+            } else if (points == 50) {
+                pointsSpinner.setSelection(1);
+            } else {
+                pointsSpinner.setSelection(2);
+            }
+
+        }
+            confirmButtonTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent replyIntent = new Intent();
+                    if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
+                        setResult(RESULT_CANCELED, replyIntent);
+                    } else {
+                        if (getIntent().hasExtra("CourseId")) {
+                            replyIntent.putExtra("id", getIntent().getIntExtra("CourseId", -1));
+                        }
+                        replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
+                        replyIntent.putExtra(getString(R.string.grade), mGrade);
+                        replyIntent.putExtra(getString(R.string.points), mPoints);
+                        setResult(RESULT_OK, replyIntent);
+                    }
+                    finish();
+                }
+            });
+
+
+
 
         closeTV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,9 +150,6 @@ public class EditorActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        setupSpinner(R.id.grade_spinner, gradeSpinner);
-        setupSpinner(R.id.points_spinner, pointsSpinner);
 
     }
 

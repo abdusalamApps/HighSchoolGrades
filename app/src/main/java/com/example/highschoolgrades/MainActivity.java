@@ -78,6 +78,26 @@ public class MainActivity extends AppCompatActivity {
                     getApplicationContext(),
                     "course added",
                     Toast.LENGTH_LONG).show();
+        } else if (requestCode == CourseListAdapter.EXISTING_COURSE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Course course = null;
+            if (data != null) {
+                course = new Course(
+                        data.getStringExtra(getString(R.string.Course)),
+                        data.getDoubleExtra(getString(R.string.grade), 0.0),
+                        data.getDoubleExtra(getString(R.string.points), 0.0)
+                );
+            }
+            int id = data.getIntExtra("id", -1);
+            if (id == -1) {
+                Toast.makeText(this, "Note can't be updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            course.setId(id);
+            mCourseViewModel.update(course);
+            Toast.makeText(
+                    getApplicationContext(),
+                    "updated",
+                    Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(
                     getApplicationContext(),

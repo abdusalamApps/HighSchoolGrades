@@ -20,6 +20,7 @@ public class CourseViewModel extends AndroidViewModel {
     }
 
     public void insert(Course course) { mRepository.insert(course);}
+    public void update(Course course) { mRepository.update(course);}
 
     public LiveData<List<Course>> getAllCourses() { return mAllCourses; }
 }
