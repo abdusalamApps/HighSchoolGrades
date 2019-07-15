@@ -58,18 +58,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mCourseViewModel.getPointsSum().observe(this, new Observer<Double>() {
-            @Override
-            public void onChanged(Double aDouble) {
-                Log.d(TAG, "onChanged: points sum is " + aDouble);
-                mPointsSum = aDouble;
-            }
-        });
-
         mCourseViewModel.getComparisonSum().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
                 Log.d(TAG, "onChanged: comparison sum is " + aDouble);
+                comparisonSumBtn.setText(String.format("%s%s%s", getString(R.string.comparison_sum)," ", aDouble));
             }
         });
 
