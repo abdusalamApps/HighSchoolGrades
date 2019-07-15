@@ -32,8 +32,11 @@ public interface CourseDao {
     List<Course> getCount();
 
     @Query("SELECT SUM(points) FROM courses_table")
-    double getPointsSum();
+    LiveData<Double> getPointsSum();
 
     @Query("SELECT SUM(points * grade) FROM courses_table")
-    double getGradesValues();
+    LiveData<Double> getGradesValues();
+
+    @Query("SELECT SUM(points * grade)/SUM(points) FROM courses_table")
+    LiveData<Double> getComparisonSum();
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,18 +18,21 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final int NEW_COURSE_ACTIVITY_REQUEST_CODE = 1;
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private RecyclerView coursesRv;
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
     private FloatingActionButton fab;
     private MaterialButton comparisonSumBtn;
-
+    private Double mPointsSum = 0.0;
+    private Double mGradesValues;
 
     void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
@@ -54,6 +58,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mCourseViewModel.getPointsSum().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                Log.d(TAG, "onChanged: points sum is " + aDouble);
+                mPointsSum = aDouble;
+            }
+        });
+
+        mCourseViewModel.getComparisonSum().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                Log.d(TAG, "onChanged: comparison sum is " + aDouble);
+            }
+        });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ResultActivity.class));
             }
         });
+
     }
 
     @Override

@@ -18,10 +18,10 @@ public class Course {
     private String course;
 
     @ColumnInfo(name = "grade")
-    private double grade;
+    public double grade;
 
     @ColumnInfo(name = "points")
-    private double points;
+    public double points;
 
     public Course(String course, double grade, double points) {
         this.course = course;

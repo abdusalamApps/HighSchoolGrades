@@ -12,11 +12,18 @@ public class CourseViewModel extends AndroidViewModel {
 
     private CourseRepository mRepository;
     private LiveData<List<Course>> mAllCourses;
+    private LiveData<Double> mPointsSum;
+    private LiveData<Double> mGradesValues;
+    private LiveData<Double> mComparisonSum;
+
 
     public CourseViewModel(@NonNull Application application) {
         super(application);
         mRepository = new CourseRepository(application);
         mAllCourses = mRepository.getAllCourses();
+        mPointsSum = mRepository.getPointsSum();
+        mGradesValues = mRepository.getGradesValues();
+        mComparisonSum = mRepository.getComparisonSum();
     }
 
     public void insert(Course course) { mRepository.insert(course);}
@@ -25,11 +32,16 @@ public class CourseViewModel extends AndroidViewModel {
 
     public LiveData<List<Course>> getAllCourses() { return mAllCourses; }
 
-    public double getPointsSum(){
-        return mRepository.getPointsSum();
+    public LiveData<Double> getPointsSum(){
+        return mPointsSum;
     }
 
-    public double getGradesValues() {
-        return mRepository.getGradesValues();
+    public LiveData<Double> getGradesValues() {
+        return mGradesValues;
     }
+
+    public LiveData<Double> getComparisonSum() {
+        return mComparisonSum;
+    }
+
 }

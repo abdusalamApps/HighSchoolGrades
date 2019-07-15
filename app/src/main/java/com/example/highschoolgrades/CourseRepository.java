@@ -11,11 +11,17 @@ public class CourseRepository {
 
     private CourseDao mCourseDao;
     private LiveData<List<Course>> mAllCourses;
+    private LiveData<Double> mPointsSum;
+    private LiveData<Double> mGradesValues;
+    private LiveData<Double> mComparisonSum;
 
     CourseRepository(Application application) {
         CourseRoomDatabase db = CourseRoomDatabase.getDatabase(application);
         mCourseDao = db.courseDao();
         mAllCourses = mCourseDao.getALlCourses();
+        mPointsSum = mCourseDao.getPointsSum();
+        mGradesValues = mCourseDao.getGradesValues();
+        mComparisonSum = mCourseDao.getComparisonSum();
     }
 
     LiveData<List<Course>> getAllCourses() {
@@ -26,16 +32,20 @@ public class CourseRepository {
         new insertAsyncTask(mCourseDao).execute(course);
     }
 
-    public void update(Course course){
-       new updateAsyncTask(mCourseDao).execute(course);
+    public void update(Course course) {
+        new updateAsyncTask(mCourseDao).execute(course);
     }
 
-    public double getPointsSum() {
-        return mCourseDao.getPointsSum();
+    LiveData<Double> getPointsSum() {
+        return mPointsSum;
     }
 
-    public double getGradesValues() {
-        return mCourseDao.getGradesValues();
+    LiveData<Double> getGradesValues() {
+        return mGradesValues;
+    }
+
+    LiveData<Double> getComparisonSum() {
+        return mComparisonSum;
     }
 
     private static class insertAsyncTask extends AsyncTask<Course, Void, Void> {
@@ -65,4 +75,5 @@ public class CourseRepository {
             return null;
         }
     }
+
 }
