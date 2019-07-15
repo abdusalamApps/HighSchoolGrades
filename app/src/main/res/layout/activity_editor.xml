@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/deleteBtn_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                     android:textAllCaps="true"
                     android:textColor="#fff"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" />-->
 
                 <TextView
                     android:id="@+id/confirmBtn_tv"

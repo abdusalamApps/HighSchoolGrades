@@ -24,7 +24,7 @@ public class EditorActivity extends AppCompatActivity {
 
     private void findViews() {
         closeTV = findViewById(R.id.close_tb_iv);
-        deleteButtonTv = findViewById(R.id.deleteBtn_tv);
+//        deleteButtonTv = findViewById(R.id.deleteBtn_tv);
         confirmButtonTv = findViewById(R.id.confirmBtn_tv);
         courseInput = findViewById(R.id.course_input);
         gradeSpinner = findViewById(R.id.grade_spinner);
@@ -38,9 +38,9 @@ public class EditorActivity extends AppCompatActivity {
 
         findViews();
 
-        deleteButtonTv.setVisibility(View.GONE);
+//        deleteButtonTv.setVisibility(View.GONE);
 
-        if (getIntent().getStringExtra("From Item") != null) {
+       /* if (getIntent().getStringExtra("From Item") != null) {
             deleteButtonTv.setVisibility(View.VISIBLE);
 
             courseInput.setText(getIntent().getStringExtra("From Item"));
@@ -48,8 +48,8 @@ public class EditorActivity extends AppCompatActivity {
             deleteButtonTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /* TODO: Push Course back to MainActivity and then delete it from the database
-                     * use startActivityForResults */
+                    *//* TODO: Push Course back to MainActivity and then delete it from the database
+                     * use startActivityForResults *//*
 //                    Temporarily, only destroy activity
                     AlertDialog alertDialog = new AlertDialog.Builder(EditorActivity.this).create();
                     alertDialog.setTitle("Delete This Course?");
@@ -85,7 +85,25 @@ public class EditorActivity extends AppCompatActivity {
                 }
             });
 
-        }
+        }*/
+
+        
+
+        confirmButtonTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent replyIntent = new Intent();
+                if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
+                    setResult(RESULT_CANCELED, replyIntent);
+                } else {
+                    replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
+                    replyIntent.putExtra(getString(R.string.grade), mGrade);
+                    replyIntent.putExtra(getString(R.string.points), mPoints);
+                    setResult(RESULT_OK, replyIntent);
+                }
+                finish();
+            }
+        });
 
         closeTV.setOnClickListener(new View.OnClickListener() {
             @Override
