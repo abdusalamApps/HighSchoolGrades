@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="grades_spinner_array">
+        <item>@string/grade_a</item>
+        <item>@string/grade_b</item>
+        <item>@string/grade_c</item>
+        <item>@string/grade_d</item>
+        <item>@string/grade_e</item>
+        <item>@string/grade_f</item>
+    </string-array>
+
+    <string-array name="points_spinner_array">
+        <item>@string/points_100</item>
+        <item>@string/points_50</item>
+        <item>@string/points_150</item>
+    </string-array>
+    <string-array name="meriter_spinner_array">
+        <item>@string/merit_0</item>
+        <item>@string/merit_05</item>
+        <item>@string/merit_1</item>
+        <item>@string/merit_15</item>
+        <item>@string/merit_2</item>
+        <item>@string/merit_25</item>
+    </string-array>
+
+    <string-array name="language_spinner_array">
+        <item>@string/english</item>
+        <item>@string/swedish</item>
+    </string-array>
+
+
+    <string-array name="courses_autoComplete">
+        <item>Arabiska</item>
+        <item>SVA 1</item>
+        <item>SVA 2</item>
+        <item>SVA 3</item>
+        <item>Matte 1</item>
+        <item>Matte 2</item>
+        <item>Matte 3</item>
+        <item>Matte 4</item>
+        <item>Matte 5</item>
+        <item>Engelska 5</item>
+        <item>Engelska 6</item>
+        <item>Engelska 7</item>
+        <item>Historia 1b </item>
+        <item>Historia 2 </item>
+        <item>Historia 3 </item>
+        <item>Idrott och hälsa 1</item>
+        <item>Idrott och hälsa 2</item>
+        <item>Religionskunskap 1</item>
+        <item>Samhällskunskap 1</item>
+        <item>Samhällskunskap 2</item>
+        <item>Företagsekonomi 1</item>
+        <item>Privatjuridik</item>
+        <item>Moderna språk</item>
+        <item>Psykologi 1</item>
+        <item>Entreprenörskap och företagande</item>
+        <item>Företagsekonomi 2</item>
+        <item>Filosofi 1</item>
+        <item>Filosofi 2</item>
+        <item>Affärsjuridik </item>
+        <item>Rätten och samhället</item>
+        <item>Psykologi 2a</item>
+        <item>Moderna språk 1</item>
+        <item>Moderna språk 2</item>
+        <item>Moderna språk 3</item>
+        <item>Moderna språk 4</item>
+        <item>Moderna språk 5</item>
+        <item>Estetisk kommunikation 1</item>
+        <item>Konstarterna och samhället</item>
+        <item>Bild och form 1b</item>
+        <item>Bild</item>
+        <item>Bildteori</item>
+        <item>Dansgestaltning 1</item>
+        <item>Dansteknik 1 </item>
+        <item>Dansteknik 2 </item>
+        <item>Dansteori</item>
+        <item>Ensemble med körsång</item>
+        <item>Instrument eller sång</item>
+        <item>Gehörs- och musiklära 1</item>
+        <item>Scenisk gestaltning 1</item>
+        <item>Scenisk gestaltning 2 </item>
+        <item>Scenisk gestaltning 3 </item>
+        <item>Teaterteori</item>
+        <item>Digitalt skapande 1</item>
+        <item>Medieproduktion 1</item>
+        <item>Medieproduktion 2</item>
+        <item>Medier, samhälle och kommunikation 1 </item>
+        <item>Kultur- och idéhistoria</item>
+        <item>Litteratur</item>
+        <item>Latin - språk och kultur</item>
+        <item>Språk</item>
+        <item>Biologi 1</item>
+        <item>Biologi 2</item>
+        <item>Fysik 1</item>
+        <item>Fysik 2</item>
+        <item>Kemi 1</item>
+        <item>Kemi 2</item>
+        <item>Geografi 1</item>
+        <item>Geografi 2</item>
+        <item>Ledarskap och organisation</item>
+        <item>Sociologi </item>
+        <item>Kommunikation </item>
+        <item>Psykologi 2a</item>
+        <item>Journalistik, reklam och information</item>
+        <item>Cad 1</item>
+        <item>Design 1</item>
+        <item>Konstruktion 1</item>
+        <item>Cad 1</item>
+        <item>Datorteknik 1a</item>
+        <item>Programmering 1</item>
+        <item>Rätten och samhället</item>
+        <item>Webbutveckling 1</item>
+        <item>Mekatronik 1</item>
+        <item>Produktionskunskap 1</item>
+        <item>Produktionsutrustning 1</item>
+        <item>Arkitektur – hus</item>
+        <item>Hållbart samhällsbyggande</item>
+        <item>Miljö- och energikunskap</item>
+        <item>Teknik 1</item>
+        <item>Teknik 2</item>
+        <item>Bioteknik </item>
+        <item>Franska 1</item>
+        <item>Franska 2</item>
+        <item>Franska 3</item>
+        <item>Franska 4</item>
+        <item>Franska 5</item>
+        <item>Tyska 1</item>
+        <item>Tyska 2</item>
+        <item>Tyska 3</item>
+        <item>Tyska 4</item>
+        <item>Tyska 5</item>
+        <item>Italiensak 1</item>
+        <item>Italiensak 2</item>
+        <item>Italiensak 3</item>
+        <item>Italiensak 4</item>
+        <item>Italiensak 5</item>
+        <item>Matte Specialisering</item>
+    </string-array>
+</resources>

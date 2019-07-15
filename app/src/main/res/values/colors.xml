@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9C27B0</color>
+    <color name="colorPrimaryDark">#7B1FA2</color>
+    <color name="colorAccent">#00C853</color>
+    <color name="colorAccentDark">#00C853</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorDeleteButton">#DF0008</color>
+    <color name="colorDeleteButtonDisabled">#549B9B9B</color>
+    <color name="colorResultBackground">#da9c27b0</color>
+    <color name="colorButtonGradientDark">@color/colorAccentDark</color>
+    <color name="colorButtonGradientLight">#00d257</color>
+    // Grades colors
+    <color name="color_grade_a">#0093e2</color>
+    <color name="color_grade_b">#00e2c8</color>
+    <color name="color_grade_c">#35e200</color>
+    <color name="color_grade_d">#e2e200</color>
+    <color name="color_grade_e">#e28b00</color>
+    <color name="color_grade_f">#e20b00</color>
+
+</resources>

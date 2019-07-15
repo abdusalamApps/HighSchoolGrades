@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">HighSchoolGrades</string>
+
+    // Grades string values
+    <string name="grade_a" translatable="false">A</string>
+    <string name="grade_b" translatable="false">B</string>
+    <string name="grade_c" translatable="false">C</string>
+    <string name="grade_d" translatable="false">D</string>
+    <string name="grade_e" translatable="false">E</string>
+    <string name="grade_f" translatable="false">F</string>
+
+    <string name="points_100" translatable="false">100</string>
+    <string name="points_50" translatable="false">50</string>
+    <string name="points_150" translatable="false">150</string>
+
+    <string name="merit_0" translatable="false">0</string>
+    <string name="merit_05" translatable="false">0.5</string>
+    <string name="merit_1" translatable="false">1</string>
+    <string name="merit_15" translatable="false">1.5</string>
+    <string name="merit_2" translatable="false">2</string>
+    <string name="merit_25" translatable="false">2.5</string>
+
+    <string name="error_deleting_course">Fel upstod med att radera</string>
+    <string name="course_deleted">Kurs Raderad</string>
+    <string name="delete">Delete</string>
+    <string name="ekonomiprogrammet">Economy Program</string>
+    <string name="estetiska_programmet">Aesthetic  Program</string>
+    <string name="humanistiska_programmet">Humanistic Program</string>
+    <string name="international_baccalaureate" translatable="false">International Baccalaureate</string>
+    <string name="naturvetenskapsprogrammet">Nature Science Program</string>
+    <string name="samhallskunskapsprogrammet">Social Science program</string>
+    <string name="teknikprogrammet">Technology Program</string>
+    <string name="grade">Grade</string>
+    <string name="screenshot" translatable="false">screenshot</string>
+    <string name="Course">Course</string>
+    <string name="add">Add</string>
+    <string name="points_sum">Points\' Sum</string>
+    <string name="extras">Extras</string>
+    <string name="rating">Final Rating</string>
+    <string name="comparison_sum">Comparison Sum</string>
+    <string name="reset">Reset the app</string>
+    <string name="grades_value">Grades\' Value</string>
+    <string name="share">Share</string>
+    <string name="done">done</string>
+    <string name="kurs">Course</string>
+    <string name="points">Points</string>
+    <string name="typ">Type</string>
+    <string name="ta_bort">Delete</string>
+    <string name="course_count">Course Count</string>
+    <string name="my_highSchool_Rating">My High School Rating</string>
+    <string name="language">Language</string>
+    <string name="english" translatable="false">English</string>
+    <string name="swedish" translatable="false">Svenska</string>
+    <string name="confirm">Confirm</string>
+</resources>

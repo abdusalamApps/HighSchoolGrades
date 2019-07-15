@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
+        tools:context=".EditorActivity"
+        android:layout_gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+
+                >
+
+                <TextView
+                    android:id="@+id/close_tb_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_x_circle"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+
+                    />
+                <!--<TextView
+                    android:id="@+id/done_tb_iv"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/ic_done"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:layout_alignParentEnd="true"/>-->
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/course_textInputLayout"
+                style="@style/Widget.MeritRaknare.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/Course"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxCornerRadiusBottomStart="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+
+                >
+
+
+                <com.example.highschoolgrades.AutoCompleteTextInputEditText
+                    android:id="@+id/course_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:inputType="textPersonName|textAutoComplete"
+                    android:maxLines="1"
+                    android:paddingStart="12dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="16dp"
+                    tools:text="Some text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/gradeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grade"
+                    android:textColor="@color/colorPrimary" />
+
+                <Spinner
+                    android:id="@+id/grade_spinner"
+                    style="@style/FormTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradeLabel"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:drawSelectorOnTop="true"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                </Spinner>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/milkLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points"
+                    android:textColor="@color/colorPrimary" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/points_spinner"
+                    style="@style/FormTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/milkLabel"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:drawSelectorOnTop="true"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                </androidx.appcompat.widget.AppCompatSpinner>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/deleteBtn_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/delete_button_background"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="18dp"
+                    android:text="@string/delete"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/confirmBtn_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/confirm_button_background"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="18dp"
+                    android:text="@string/confirm"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</ScrollView>
