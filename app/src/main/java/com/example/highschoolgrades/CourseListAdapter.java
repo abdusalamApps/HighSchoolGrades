@@ -1,5 +1,6 @@
 package com.example.highschoolgrades;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CourseViewHolder> {
+    public static final int EXISTING_COURSE_ACTIVITY_REQUEST_CODE = 2;
 
     private LayoutInflater mInflater;
     private List<Course> mCourses;
@@ -64,7 +66,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), EditorActivity.class);
                 intent.putExtra("From Item", mCourses.get(position).getCourse());
-                holder.itemView.getContext().startActivity(intent);
+                Activity context = (Activity) holder.itemView.getContext();
+                context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE);
             }
         });
     }
