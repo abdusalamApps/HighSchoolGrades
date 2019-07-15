@@ -18,6 +18,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int NEW_COURSE_ACTIVITY_REQUEST_CODE = 1;
+
     private RecyclerView coursesRv;
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EditorActivity.class
-                ));
+                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
             }
         });
     }
