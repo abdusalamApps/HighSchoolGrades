@@ -43,58 +43,10 @@ public class EditorActivity extends AppCompatActivity {
         setupSpinner(R.id.points_spinner, pointsSpinner);
 
 
-//        deleteButtonTv.setVisibility(View.GONE);
-
-       /* if (getIntent().getStringExtra("From Item") != null) {
-            deleteButtonTv.setVisibility(View.VISIBLE);
-
-            courseInput.setText(getIntent().getStringExtra("From Item"));
-
-            deleteButtonTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    *//* TODO: Push Course back to MainActivity and then delete it from the database
-         * use startActivityForResults *//*
-//                    Temporarily, only destroy activity
-                    AlertDialog alertDialog = new AlertDialog.Builder(EditorActivity.this).create();
-                    alertDialog.setTitle("Delete This Course?");
-                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "DELETE", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
-                    alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "CANCEL", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-                    alertDialog.show();
-                }
-            });
-        } else {
-            confirmButtonTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent replyIntent = new Intent();
-                    if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
-                        setResult(RESULT_CANCELED, replyIntent);
-                    } else {
-                        replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
-                        replyIntent.putExtra(getString(R.string.grade), mGrade);
-                        replyIntent.putExtra(getString(R.string.points), mPoints);
-                        setResult(RESULT_OK, replyIntent);
-                    }
-                    finish();
-                }
-            });
-
-        }*/
-
 //        if we are coming from an existing item then put course name the existing course name
         if (getIntent().hasExtra("CourseId")) {
             courseInput.setText(getIntent().getStringExtra("Course"));
+            confirmButtonTv.setText("UPDATE");
 //            Figuring out the grade and selecting the right option on gradeSpinner
             double grade = getIntent().getDoubleExtra("Grade", 0);
             if (grade == 20.0) {
@@ -141,16 +93,12 @@ public class EditorActivity extends AppCompatActivity {
                 }
             });
 
-
-
-
         closeTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
 
     private void setupSpinner(final int spinnerId, Spinner spinner) {
@@ -164,8 +112,6 @@ public class EditorActivity extends AppCompatActivity {
                 break;
             default:
                 arrayRecourse = R.array.grades_spinner_array;
-
-
         }
 
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, arrayRecourse, android.R.layout.simple_spinner_item);
