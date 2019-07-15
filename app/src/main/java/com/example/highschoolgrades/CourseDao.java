@@ -30,4 +30,10 @@ public interface CourseDao {
 
     @Query("SELECT * from courses_table ORDER BY course ASC")
     List<Course> getCount();
+
+    @Query("SELECT SUM(points) FROM courses_table")
+    double getPointsSum();
+
+    @Query("SELECT SUM(points * grade) FROM courses_table")
+    double getGradesValues();
 }

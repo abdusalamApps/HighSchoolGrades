@@ -30,6 +30,13 @@ public class CourseRepository {
        new updateAsyncTask(mCourseDao).execute(course);
     }
 
+    public double getPointsSum() {
+        return mCourseDao.getPointsSum();
+    }
+
+    public double getGradesValues() {
+        return mCourseDao.getGradesValues();
+    }
 
     private static class insertAsyncTask extends AsyncTask<Course, Void, Void> {
         private CourseDao asyncCourseDao;

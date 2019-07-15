@@ -41,7 +41,6 @@ public class Course {
         return points;
     }
 
-
     public int getId() {
         return id;
     }
