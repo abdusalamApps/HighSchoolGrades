@@ -1,5 +1,6 @@
 package com.example.highschoolgrades;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -57,5 +59,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NEW_COURSE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Course course = null;
+            if (data != null) {
+                course = new Course(
+                        data.getStringExtra(getString(R.string.Course)),
+                        data.getDoubleExtra(getString(R.string.grade), 0.0),
+                        data.getDoubleExtra(getString(R.string.points), 0.0)
+                );
+            }
+            mCourseViewModel.insert(course);
+            Toast.makeText(
+                    getApplicationContext(),
+                    "course added",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "canceled",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
