@@ -74,7 +74,10 @@
                     android:paddingTop="16dp"
                     android:paddingEnd="12dp"
                     android:paddingBottom="16dp"
-                    tools:text="Some text" />
+                    tools:text="Some text"
+                    android:fontFamily="@font/segoeui"
+                    android:letterSpacing="0.0892857143"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
@@ -89,7 +92,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/grade"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/segoeui"
+                    android:letterSpacing="0.0892857143"
+                    />
 
                 <Spinner
                     android:id="@+id/grade_spinner"
@@ -119,7 +125,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/points"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/segoeui"
+                    android:letterSpacing="0.0892857143"
+                    />
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/points_spinner"
@@ -170,7 +179,10 @@
                     android:textAllCaps="true"
                     android:textColor="#fff"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/segoeuib"
+                    android:letterSpacing="0.1892857143"
+                    />
 
             </LinearLayout>
         </LinearLayout>

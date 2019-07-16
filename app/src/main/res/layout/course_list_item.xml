@@ -47,15 +47,22 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                tools:text="Sammhällskunskap 1b" />
+                tools:text="Sammhällskunskap 1b"
+                android:fontFamily="@font/segoeui"
+                android:letterSpacing="0.0892857143"
+
+                />
 
 
             <TextView
                 android:id="@+id/points_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                tools:text="100" />
+                tools:text="100"
+                android:fontFamily="@font/segoeui"
+                android:letterSpacing="0.0892857143"
+
+                />
 
         </LinearLayout>
     </LinearLayout>
