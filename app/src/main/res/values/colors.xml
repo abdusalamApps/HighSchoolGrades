@@ -3,7 +3,7 @@
     <color name="colorPrimary">#9C27B0</color>
     <color name="colorPrimaryDark">#7B1FA2</color>
     <color name="colorAccent">#00C853</color>
-    <color name="colorAccentDark">#00C853</color>
+    <color name="colorAccentDark">#00B94B</color>
     <color name="colorTransparent">#00ffffff</color>
     <color name="colorDeleteButton">#DF0008</color>
     <color name="colorDeleteButtonDisabled">#549B9B9B</color>

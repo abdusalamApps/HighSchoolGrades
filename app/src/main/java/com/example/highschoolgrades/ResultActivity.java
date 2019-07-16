@@ -12,9 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ResultActivity extends AppCompatActivity {
+import java.text.DecimalFormat;
 
-    private CourseViewModel mCourseViewModel;
+public class ResultActivity extends AppCompatActivity {
 
     private TextView closeIV;
     private TextView courseCountTV;
@@ -37,11 +37,12 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
-        mCourseViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
+        CourseViewModel mCourseViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
         mCourseViewModel.getComparisonSum().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                comparisonSumTV.setText(String.valueOf(aDouble));
+                DecimalFormat df = new DecimalFormat("##.##");
+                comparisonSumTV.setText(df.format(aDouble));
             }
         });
         mCourseViewModel.getPointsSum().observe(this, new Observer<Double>() {

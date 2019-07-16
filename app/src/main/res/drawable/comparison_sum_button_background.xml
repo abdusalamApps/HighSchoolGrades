@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--<solid android:color="@color/colorDeleteButton"/>-->
+    <!--<gradient android:startColor="#DB0011"
+        android:endColor="#E91200"
+        android:angle="-45"/>-->
+    <solid android:color="@color/colorAccentDark"/>
+    <corners android:topRightRadius="15dp"
+        android:bottomRightRadius="15dp"
+        android:topLeftRadius="0dp"
+        android:bottomLeftRadius="0dp"/>
+</shape>

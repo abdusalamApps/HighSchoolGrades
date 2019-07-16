@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
     private FloatingActionButton fab;
-    private MaterialButton comparisonSumBtn;
+    private TextView comparisonSumBtn;
 
     void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
@@ -59,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
         mCourseViewModel.getComparisonSum().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                comparisonSumBtn.setText(String.format("%s%s%s", getString(R.string.comparison_sum)," ", aDouble));
+                DecimalFormat df = new DecimalFormat("##.##");
+                double sum = aDouble;
+                comparisonSumBtn.setText(df.format(sum));
             }
         });
 
