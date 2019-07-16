@@ -38,6 +38,10 @@ public class CourseRepository {
         new updateAsyncTask(mCourseDao).execute(course);
     }
 
+    public void deleteCourse(Course course) {
+        new deleteAsyncTask(mCourseDao).execute(course);
+    }
+
     LiveData<Double> getPointsSum() {
         return mPointsSum;
     }
@@ -53,6 +57,7 @@ public class CourseRepository {
     LiveData<Integer> getSize() {
         return mSize;
     }
+
     private static class insertAsyncTask extends AsyncTask<Course, Void, Void> {
         private CourseDao asyncCourseDao;
 
@@ -77,6 +82,20 @@ public class CourseRepository {
         @Override
         protected Void doInBackground(Course... courses) {
             asyncCourseDao.updateCourse(courses[0]);
+            return null;
+        }
+    }
+
+    private static class deleteAsyncTask extends AsyncTask<Course, Void, Void> {
+        private CourseDao asyncCourseDao;
+
+        deleteAsyncTask(CourseDao dao) {
+            asyncCourseDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Course... courses) {
+            asyncCourseDao.deleteCourse(courses[0]);
             return null;
         }
     }

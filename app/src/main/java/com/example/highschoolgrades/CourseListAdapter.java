@@ -80,6 +80,9 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         notifyDataSetChanged();
     }
 
+    public Course getCourseAt(int position) {
+        return mCourses.get(position);
+    }
     @Override
     public int getItemCount() {
         if (mCourses != null)
