@@ -2,6 +2,7 @@ package com.example.highschoolgrades;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -69,8 +73,31 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                mCourseViewModel.deleteCourse(adapter.getCourseAt(viewHolder.getAdapterPosition()));
-//                Toast.makeText(MainActivity.this, "Course deleted", Toast.LENGTH_LONG).show();
+                final Course course = adapter.getCourseAt(viewHolder.getAdapterPosition());
+                mCourseViewModel.deleteCourse(course);
+                /*Store the Course to be able to restore it*/
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+                View dialogLayout = inflater.inflate(R.layout.custom_dialog, null);
+                builder.setView(dialogLayout);
+                final AlertDialog dialog = builder.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                TextView closeTV = dialogLayout.findViewById(R.id.dialog_close_tv);
+                closeTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                TextView restoreTV = dialogLayout.findViewById(R.id.dialog_restore_tv);
+                restoreTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mCourseViewModel.insert(course);
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
 
             }
         }).attachToRecyclerView(coursesRv);
