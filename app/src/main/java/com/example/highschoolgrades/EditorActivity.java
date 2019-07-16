@@ -26,7 +26,6 @@ public class EditorActivity extends AppCompatActivity {
 
     private void findViews() {
         closeTV = findViewById(R.id.close_tb_iv);
-//        deleteButtonTv = findViewById(R.id.deleteBtn_tv);
         confirmButtonTv = findViewById(R.id.confirmBtn_tv);
         courseInput = findViewById(R.id.course_input);
         gradeSpinner = findViewById(R.id.grade_spinner);
@@ -42,6 +41,9 @@ public class EditorActivity extends AppCompatActivity {
         setupSpinner(R.id.grade_spinner, gradeSpinner);
         setupSpinner(R.id.points_spinner, pointsSpinner);
 
+        String[] courses = getResources().getStringArray(R.array.courses_autoComplete);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+        courseInput.setAdapter(adapter);
 
 //        if we are coming from an existing item then put course name the existing course name
         if (getIntent().hasExtra("CourseId")) {
