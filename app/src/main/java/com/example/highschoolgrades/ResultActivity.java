@@ -97,13 +97,13 @@ public class ResultActivity extends AppCompatActivity {
                     case 2:
                         meritVardeTV.setText(String.valueOf(1.0 + Double.parseDouble(comparisonSumTV.getText().toString())));
                         break;
-                    case 4:
+                    case 3:
                         meritVardeTV.setText(String.valueOf(1.5 + Double.parseDouble(comparisonSumTV.getText().toString())));
                         break;
-                    case 5:
+                    case 4:
                         meritVardeTV.setText(String.valueOf(2.0 + Double.parseDouble(comparisonSumTV.getText().toString())));
                         break;
-                    case 6:
+                    case 5:
                         meritVardeTV.setText(String.valueOf(2.5 + Double.parseDouble(comparisonSumTV.getText().toString())));
                         break;
                 }
