@@ -55,4 +55,14 @@
         <item name="android:background">@drawable/left_corner_rounded_background</item>
         <item name="android:foreground">?android:selectableItemBackground</item>
     </style>
+
+    <style name="TextAppearance.HighSchoolGrades.DialogTitle" parent="TextAppearance.AppCompat.Title">
+        <!-- Fake Roboto Medium. -->
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.0892857143</item>
+    </style>
 </resources>

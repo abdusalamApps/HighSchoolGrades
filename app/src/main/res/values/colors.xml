@@ -5,7 +5,7 @@
     <color name="colorAccent">#00C853</color>
     <color name="colorAccentDark">#00B94B</color>
     <color name="colorTransparent">#00ffffff</color>
-    <color name="colorDeleteButton">#DF0008</color>
+    <color name="colorDeleteButton">#B40000</color>
     <color name="colorDeleteButtonDisabled">#549B9B9B</color>
     <color name="colorResultBackground">#da9c27b0</color>
     <color name="colorButtonGradientDark">@color/colorAccentDark</color>

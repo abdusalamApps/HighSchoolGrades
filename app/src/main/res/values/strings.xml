@@ -21,7 +21,7 @@
     <string name="merit_25" translatable="false">2.5</string>
 
     <string name="error_deleting_course">Fel upstod med att radera</string>
-    <string name="course_deleted">Kurs Raderad</string>
+    <string name="course_deleted">course deleted</string>
     <string name="delete">Delete</string>
     <string name="ekonomiprogrammet">Economy Program</string>
     <string name="estetiska_programmet">Aesthetic  Program</string>
