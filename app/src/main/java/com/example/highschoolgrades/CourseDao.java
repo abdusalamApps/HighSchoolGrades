@@ -31,6 +31,9 @@ public interface CourseDao {
     @Query("SELECT * from courses_table ORDER BY course ASC")
     List<Course> getCount();
 
+    @Query("SELECT COUNT(*) FROM courses_table")
+    LiveData<Integer> getSize();
+
     @Query("SELECT SUM(points) FROM courses_table")
     LiveData<Double> getPointsSum();
 

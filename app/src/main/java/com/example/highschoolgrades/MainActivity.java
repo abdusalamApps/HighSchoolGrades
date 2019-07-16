@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private CourseViewModel mCourseViewModel;
     private FloatingActionButton fab;
     private MaterialButton comparisonSumBtn;
-    private Double mPointsSum = 0.0;
-    private Double mGradesValues;
 
     void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
@@ -61,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
         mCourseViewModel.getComparisonSum().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                Log.d(TAG, "onChanged: comparison sum is " + aDouble);
                 comparisonSumBtn.setText(String.format("%s%s%s", getString(R.string.comparison_sum)," ", aDouble));
+            }
+        });
+
+        comparisonSumBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ResultActivity.class));
             }
         });
 
@@ -71,13 +75,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditorActivity.class);
                 startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
-            }
-        });
-
-        comparisonSumBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ResultActivity.class));
             }
         });
 
@@ -111,10 +108,12 @@ public class MainActivity extends AppCompatActivity {
             }
             int id = data.getIntExtra("id", -1);
             if (id == -1) {
-                Toast.makeText(this, "Note can't be updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Course can't be updated", Toast.LENGTH_SHORT).show();
                 return;
             }
-            course.setId(id);
+            if (course != null) {
+                course.setId(id);
+            }
             mCourseViewModel.update(course);
             Toast.makeText(
                     getApplicationContext(),
