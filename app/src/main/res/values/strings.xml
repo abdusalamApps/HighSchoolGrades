@@ -52,4 +52,5 @@
     <string name="english" translatable="false">English</string>
     <string name="swedish" translatable="false">Svenska</string>
     <string name="confirm">Confirm</string>
+    <string name="delete_dialog_text">The course is now deleted, but you still can restore it.</string>
 </resources>

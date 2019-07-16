@@ -19,6 +19,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/segoeui"
             android:letterSpacing="0.0892857143"
             android:padding="8dp"
             android:text="@string/course_deleted"
@@ -27,29 +29,34 @@
             android:textColor="@color/colorDeleteButton"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"
+            android:typeface="monospace"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The course is now deleted, but you still can restore it."
-            android:padding="16dp"
+            android:fontFamily="@font/segoeui"
             android:letterSpacing="0.0892857143"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingEnd="64dp"
+            android:paddingStart="64dp"
+            android:text="@string/delete_dialog_text"
             android:textColor="#000"
             android:textSize="16sp"
-            />
+            android:typeface="normal" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            >
+            android:baselineAligned="false">
             <FrameLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_gravity="center">
                 <TextView
                     android:id="@+id/dialog_close_tv"
@@ -64,15 +71,17 @@
             <FrameLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                >
                 <TextView
                     android:id="@+id/dialog_restore_tv"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
                     android:background="@drawable/ic_restore"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     />
 
             </FrameLayout>
