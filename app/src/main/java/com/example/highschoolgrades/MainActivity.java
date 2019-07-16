@@ -28,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 View dialogLayout = inflater.inflate(R.layout.custom_dialog, null);
                 builder.setView(dialogLayout);
                 final AlertDialog dialog = builder.create();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 TextView closeTV = dialogLayout.findViewById(R.id.dialog_close_tv);
                 closeTV.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -154,9 +155,12 @@ public class MainActivity extends AppCompatActivity {
                         data.getDoubleExtra(getString(R.string.points), 0.0)
                 );
             }
-            int id = data.getIntExtra("id", -1);
+            int id = 0;
+            if (data != null) {
+                id = data.getIntExtra("id", -1);
+            }
             if (id == -1) {
-                Toast.makeText(this, "Course can't be updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.failed_to_update), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (course != null) {

@@ -76,7 +76,7 @@ public class ResultActivity extends AppCompatActivity {
         comparisonSumTV = findViewById(R.id.comparison_sum_tv);
         meriterSpinner = findViewById(R.id.meriter_spinner);
         meritVardeTV = findViewById(R.id.meritvarde_tv);
-        shareIV = findViewById(R.id.share_imageView);
+//        shareIV = findViewById(R.id.share_imageView);
     }
 
     private void setupSpinner() {

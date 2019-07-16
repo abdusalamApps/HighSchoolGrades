@@ -20,7 +20,6 @@
     <string name="merit_2" translatable="false">2</string>
     <string name="merit_25" translatable="false">2.5</string>
 
-    <string name="error_deleting_course">Fel upstod med att radera</string>
     <string name="course_deleted">course deleted</string>
     <string name="delete">Delete</string>
     <string name="ekonomiprogrammet">Economy Program</string>
@@ -50,7 +49,8 @@
     <string name="my_highSchool_Rating">My High School Rating</string>
     <string name="language">Language</string>
     <string name="english" translatable="false">English</string>
-    <string name="swedish" translatable="false">Svenska</string>
+    <string name="swedish" translatable="false">Swedish</string>
     <string name="confirm">Confirm</string>
     <string name="delete_dialog_text">The course is now deleted, but you still can restore it.</string>
+    <string name="failed_to_update">Course can\'t be updated</string>
 </resources>
