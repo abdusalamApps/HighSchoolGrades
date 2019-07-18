@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gymnasies Merit Räknare</string>
+    <string name="Course">Kurs</string>
+    <string name="add">Lägg till</string>
+    <string name="comparison_sum">Jämförelsetal</string>
+    <string name="confirm">bekräfta</string>
+    <string name="course_count">Antal Kurser</string>
+    <string name="course_deleted">Kurs Raderad</string>
+    <string name="delete">Radera</string>
+    <string name="delete_dialog_text">Kursen är nu raderad, men du kan fortfarande återställa den.</string>
+    <string name="done">gjort</string>
+    <string name="ekonomiprogrammet">ekonomiprogrammet</string>
+    <string name="estetiska_programmet">Estetiska Programmet</string>
+    <string name="extras">Extra Meriter</string>
+    <string name="failed_to_update">Kurs kan ej ändras</string>
+    <string name="grade">Betyg</string>
+    <string name="grades_value">Betygsvärde</string>
+    <string name="humanistiska_programmet">Humanisitiska Programmet</string>
+    <string name="language">Språk</string>
+    <string name="naturvetenskapsprogrammet">Naturvetenskapsprogrammet</string>
+    <string name="points">Poäng</string>
+    <string name="points_sum">Antal Poäng</string>
+    <string name="rating">Meritvärde</string>
+    <string name="reset">Återställ appen</string>
+    <string name="samhallskunskapsprogrammet">Samhällskunskapsprogrammet</string>
+    <string name="share">Dela</string>
+    <string name="teknikprogrammet">Teknikprogrammet</string>
+</resources>
