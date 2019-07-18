@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    tools:context=".ResultActivity"
     android:layout_gravity="center_vertical"
+    android:background="@color/colorPrimaryDark"
     android:gravity="center_vertical"
-    >
+    android:orientation="vertical"
+    tools:context=".ResultActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -29,15 +28,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/closeResult_tv"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/ic_x_circle"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/closeResult_tv"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_x_circle"
+                        android:foreground="?attr/selectableItemBackgroundBorderless" />
+
+                    <TextView
+                        android:id="@+id/options_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/settings_icon"
+                        android:foreground="?attr/selectableItemBackgroundBorderless" />
+
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -53,25 +71,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/courseCount_tv"
+                        android:fontFamily="@font/segoeui"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0892857143"
                         android:text="@string/course_count"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeui"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/courseCount_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#707070"
-                        android:textSize="16sp"
-                        tools:text="22"
                         android:fontFamily="@font/segoeui"
                         android:letterSpacing="0.0892857143"
-                        />
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        tools:text="22" />
 
                 </RelativeLayout>
 
@@ -89,25 +105,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/grades_value_tv"
+                        android:fontFamily="@font/segoeui"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0892857143"
                         android:text="@string/grades_value"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeui"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/grades_value_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#707070"
-                        android:textSize="16sp"
-                        tools:text="30600"
                         android:fontFamily="@font/segoeui"
                         android:letterSpacing="0.0892857143"
-                        />
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        tools:text="30600" />
 
                 </RelativeLayout>
 
@@ -127,25 +141,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/pointsSum_tv"
+                        android:fontFamily="@font/segoeui"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0892857143"
                         android:text="@string/points_sum"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeui"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/pointsSum_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#707070"
-                        android:textSize="16sp"
-                        tools:text="1800"
                         android:fontFamily="@font/segoeui"
                         android:letterSpacing="0.0892857143"
-                        />
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        tools:text="1800" />
 
                 </RelativeLayout>
 
@@ -163,25 +175,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_toStartOf="@+id/comparison_sum_tv"
+                        android:fontFamily="@font/segoeui"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0892857143"
                         android:text="@string/comparison_sum"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeui"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/comparison_sum_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#707070"
-                        android:textSize="16sp"
-                        tools:text="17.0"
                         android:fontFamily="@font/segoeui"
                         android:letterSpacing="0.0892857143"
-                        />
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        tools:text="17.0" />
 
                 </RelativeLayout>
 
@@ -201,13 +211,12 @@
                         android:layout_alignParentStart="true"
                         android:layout_gravity="center"
                         android:layout_toStartOf="@+id/meriter_spinner"
+                        android:fontFamily="@font/segoeui"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0892857143"
                         android:text="@string/extras"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeui"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        android:textSize="16sp" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/meriter_spinner"
@@ -243,26 +252,24 @@
                         android:layout_alignParentStart="true"
                         android:layout_gravity="center"
                         android:layout_toStartOf="@+id/meritvarde_tv"
+                        android:fontFamily="@font/segoeuib"
                         android:gravity="center_vertical"
+                        android:letterSpacing="0.0992857143"
                         android:text="@string/rating"
                         android:textColor="#000"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/segoeuib"
-                        android:letterSpacing="0.0992857143"
-                        />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/meritvarde_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/segoeuib"
                         android:gravity="center_vertical|end"
+                        android:letterSpacing="0.0892857143"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="16sp"
-                        tools:text="19.0"
-                        android:fontFamily="@font/segoeuib"
-                        android:letterSpacing="0.0892857143"
-                        />
+                        tools:text="19.0" />
 
                 </RelativeLayout>
 
