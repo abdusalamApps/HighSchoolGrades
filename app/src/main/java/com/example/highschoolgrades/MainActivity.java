@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView pointsSumTV;
     private TextView gradesValuesTV;
     private TextView courseCountTV;
+    private double sum;
 
     void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+        sum = 1.0;
 
         adapter = new CourseListAdapter(this);
         coursesRv.setAdapter(adapter);
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(Double aDouble) {
                 DecimalFormat df = new DecimalFormat("##.##");
-                double sum = aDouble;
+                sum = aDouble;
                 comparisonSumBtn.setText(df.format(sum));
             }
         });
@@ -186,14 +189,30 @@ public class MainActivity extends AppCompatActivity {
                 setupSpinner();
 
                 dialog.show();
+
             }
         });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
-                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
+                /*Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);*/
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+                View dialogLayout = inflater.inflate(R.layout.activity_editor, null);
+                builder.setView(dialogLayout);
+                final AlertDialog dialog = builder.create();
+                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                TextView confirmTV = dialogLayout.findViewById(R.id.confirmBtn_tv);
+                confirmTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 
