@@ -95,7 +95,10 @@
             android:layout_margin="4dp"
             android:src="@drawable/ic_add_white_24dp"
             app:layout_anchor="@+id/courses_rv"
-            app:layout_anchorGravity="end|bottom" />
+            app:layout_anchorGravity="end|bottom"
+            android:transitionName="editor_cardView"
+
+            />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

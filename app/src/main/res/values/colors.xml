@@ -12,7 +12,7 @@
     <color name="colorButtonGradientLight">#00d257</color>
     // Grades colors
     <color name="color_grade_a">#0093e2</color>
-    <color name="color_grade_b">#00e2c8</color>
+    <color name="color_grade_b">#02DABE</color>
     <color name="color_grade_c">#35e200</color>
     <color name="color_grade_d">#e2e200</color>
     <color name="color_grade_e">#e28b00</color>
