@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -70,8 +72,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
         findViews();
+
+
 
         sum = 1.0;
 
@@ -145,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 View dialogView = inflater.inflate(R.layout.activity_result, null);
                 builder.setView(dialogView);
                 final AlertDialog dialog = builder.create();
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                final CardView cardView = dialogView.findViewById(R.id.cardView);
                 TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
                 closeTV.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -154,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+                Window window = dialog.getWindow();
+                if (window != null) {
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
 
                 meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
                 meritVardeTV = dialogView.findViewById(R.id.meritvarde_tv);

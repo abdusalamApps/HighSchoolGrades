@@ -80,6 +80,7 @@
                     android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     android:transitionName="gradeTextView"
+                    android:textStyle="bold"
 
                     />
             </com.google.android.material.textfield.TextInputLayout>
