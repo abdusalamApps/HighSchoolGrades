@@ -213,10 +213,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditorActivity.class);
 
+/*
                 ActivityOptionsCompat activityOptionsCompat =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, fab, "editor_cardView");
+*/
 
-                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle());
+                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
                 /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 LayoutInflater inflater = MainActivity.this.getLayoutInflater();
                 View dialogLayout = inflater.inflate(R.layout.activity_editor, null);
