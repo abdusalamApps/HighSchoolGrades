@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -11,6 +14,11 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,9 +26,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,8 +72,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
         findViews();
+
+
 
         sum = 1.0;
 
@@ -119,7 +136,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(Double aDouble) {
                 DecimalFormat df = new DecimalFormat("##.##");
-                sum = aDouble;
+                if (aDouble != null) {
+                    sum = aDouble;
+                }
                 comparisonSumBtn.setText(df.format(sum));
             }
         });
@@ -133,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 View dialogView = inflater.inflate(R.layout.activity_result, null);
                 builder.setView(dialogView);
                 final AlertDialog dialog = builder.create();
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
                 closeTV.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -141,13 +159,10 @@ public class MainActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                TextView optionsTV = dialogView.findViewById(R.id.options_tv);
-                optionsTV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(MainActivity.this, OptionsActivity.class));
-                    }
-                });
+                Window window = dialog.getWindow();
+                if (window != null) {
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
 
                 meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
                 meritVardeTV = dialogView.findViewById(R.id.meritvarde_tv);
@@ -196,9 +211,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(MainActivity.this, EditorActivity.class);
-                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);*/
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+
+                ActivityOptionsCompat activityOptionsCompat =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, fab, "editor_cardView");
+
+                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle());
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 LayoutInflater inflater = MainActivity.this.getLayoutInflater();
                 View dialogLayout = inflater.inflate(R.layout.activity_editor, null);
                 builder.setView(dialogLayout);
@@ -212,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                dialog.show();
+                dialog.show();*/
             }
         });
 
@@ -235,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                     getApplicationContext(),
                     "course added",
                     Toast.LENGTH_LONG).show();
-        } else if (requestCode == CourseListAdapter.EXISTING_COURSE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+        } else if (requestCode == CourseListAdapter.Companion.getEXISTING_COURSE_ACTIVITY_REQUEST_CODE() && resultCode == RESULT_OK) {
             Course course = null;
             if (data != null) {
                 course = new Course(

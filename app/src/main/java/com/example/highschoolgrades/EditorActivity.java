@@ -98,7 +98,7 @@ public class EditorActivity extends AppCompatActivity {
         closeTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
     }
