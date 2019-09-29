@@ -72,13 +72,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
         findViews();
-
-
 
         sum = 1.0;
 
@@ -299,22 +295,22 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        meritVardeTV.setText(String.valueOf(Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(formatComparisonSum()));
                         break;
                     case 1:
-                        meritVardeTV.setText(String.valueOf(0.5 + Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(0.5 + formatComparisonSum()));
                         break;
                     case 2:
-                        meritVardeTV.setText(String.valueOf(1.0 + Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(1.0 + formatComparisonSum()));
                         break;
                     case 3:
-                        meritVardeTV.setText(String.valueOf(1.5 + Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(1.5 + formatComparisonSum()));
                         break;
                     case 4:
-                        meritVardeTV.setText(String.valueOf(2.0 + Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(2.0 + formatComparisonSum()));
                         break;
                     case 5:
-                        meritVardeTV.setText(String.valueOf(2.5 + Double.parseDouble(comparisonSumTV.getText().toString())));
+                        meritVardeTV.setText(String.valueOf(2.5 + formatComparisonSum()));
                         break;
                 }
             }
@@ -324,5 +320,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private Double formatComparisonSum() {
+        String s = comparisonSumTV.getText().toString();
+        if (s.contains(",")){
+            s = s.replace(",", ".");
+        }
+        return Double.parseDouble(s);
     }
 }
