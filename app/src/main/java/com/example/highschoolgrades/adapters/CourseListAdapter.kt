@@ -1,4 +1,4 @@
-package com.example.highschoolgrades
+package com.example.highschoolgrades.adapters
 
 import android.app.Activity
 import android.content.Context
@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
+import com.example.highschoolgrades.R
+import com.example.highschoolgrades.models.Course
+import com.example.highschoolgrades.ui.EditorActivity
 
 class CourseListAdapter internal constructor(context: Context) : RecyclerView.Adapter<CourseListAdapter.CourseViewHolder>() {
 

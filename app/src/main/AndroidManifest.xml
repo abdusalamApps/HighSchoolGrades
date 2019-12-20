@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".EditorActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.ResultActivity" />
+        <activity android:name=".ui.EditorActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

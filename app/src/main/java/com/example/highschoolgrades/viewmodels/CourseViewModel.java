@@ -1,10 +1,13 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.viewmodels;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.highschoolgrades.models.Course;
+import com.example.highschoolgrades.repository.CourseRepository;
 
 import java.util.List;
 

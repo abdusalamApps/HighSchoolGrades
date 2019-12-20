@@ -1,7 +1,6 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.highschoolgrades.models.Course;
 
 public class Constants {
 

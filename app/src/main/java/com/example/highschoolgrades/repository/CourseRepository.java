@@ -1,9 +1,13 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.highschoolgrades.models.Course;
+import com.example.highschoolgrades.database.CourseDao;
+import com.example.highschoolgrades.database.CourseRoomDatabase;
 
 import java.util.List;
 
@@ -16,7 +20,7 @@ public class CourseRepository {
     private LiveData<Double> mComparisonSum;
     private LiveData<Integer> mSize;
 
-    CourseRepository(Application application) {
+    public CourseRepository(Application application) {
         CourseRoomDatabase db = CourseRoomDatabase.getDatabase(application);
         mCourseDao = db.courseDao();
         mAllCourses = mCourseDao.getALlCourses();
@@ -26,7 +30,7 @@ public class CourseRepository {
         mSize = mCourseDao.getSize();
     }
 
-    LiveData<List<Course>> getAllCourses() {
+    public LiveData<List<Course>> getAllCourses() {
         return mAllCourses;
     }
 
@@ -42,19 +46,19 @@ public class CourseRepository {
         new deleteAsyncTask(mCourseDao).execute(course);
     }
 
-    LiveData<Double> getPointsSum() {
+    public LiveData<Double> getPointsSum() {
         return mPointsSum;
     }
 
-    LiveData<Double> getGradesValues() {
+    public LiveData<Double> getGradesValues() {
         return mGradesValues;
     }
 
-    LiveData<Double> getComparisonSum() {
+    public LiveData<Double> getComparisonSum() {
         return mComparisonSum;
     }
 
-    LiveData<Integer> getSize() {
+    public LiveData<Integer> getSize() {
         return mSize;
     }
 

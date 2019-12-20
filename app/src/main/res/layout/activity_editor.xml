@@ -15,7 +15,7 @@
         android:padding="8dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="30dp"
-        tools:context=".EditorActivity"
+        tools:context=".ui.EditorActivity"
         android:transitionName="editor_cardView"
         >
 
@@ -65,7 +65,7 @@
                 app:boxCornerRadiusTopStart="15dp"
                 >
 
-                <com.example.highschoolgrades.AutoCompleteTextInputEditText
+                <com.example.highschoolgrades.ui.AutoCompleteTextInputEditText
                     android:id="@+id/course_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

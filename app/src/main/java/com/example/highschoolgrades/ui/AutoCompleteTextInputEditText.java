@@ -1,4 +1,4 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

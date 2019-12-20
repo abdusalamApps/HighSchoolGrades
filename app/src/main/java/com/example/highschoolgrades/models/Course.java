@@ -1,4 +1,4 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.models;
 
 
 import androidx.annotation.NonNull;

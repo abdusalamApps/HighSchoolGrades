@@ -1,4 +1,4 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.ui;
 
 import android.app.Activity;
 import android.app.Dialog;

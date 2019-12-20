@@ -1,6 +1,9 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.database;
 
 import android.os.AsyncTask;
+
+import com.example.highschoolgrades.data.Constants;
+import com.example.highschoolgrades.models.Course;
 
 public class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 

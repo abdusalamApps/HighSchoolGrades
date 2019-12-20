@@ -1,4 +1,4 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.highschoolgrades.viewmodels.CourseViewModel;
+import com.example.highschoolgrades.R;
 
 import java.text.DecimalFormat;
 

@@ -1,18 +1,17 @@
-package com.example.highschoolgrades;
+package com.example.highschoolgrades.ui;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.highschoolgrades.R;
 
 public class EditorActivity extends AppCompatActivity {
 
