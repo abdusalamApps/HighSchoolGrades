@@ -6,6 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "courses_table")
 public class Course {
 
@@ -23,12 +25,13 @@ public class Course {
     @ColumnInfo(name = "points")
     public double points;
 
-    public Course(String course, double grade, double points) {
+    public Course(@NotNull String course, double grade, double points) {
         this.course = course;
         this.grade = grade;
         this.points = points;
     }
 
+    @NotNull
     public String getCourse() {
         return course;
     }

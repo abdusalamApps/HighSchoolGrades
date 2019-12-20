@@ -90,7 +90,7 @@ public class EditorActivity extends AppCompatActivity {
                         replyIntent.putExtra(getString(R.string.points), mPoints);
                         setResult(RESULT_OK, replyIntent);
                     }
-                    finish();
+                    finishAfterTransition();
                 }
             });
 

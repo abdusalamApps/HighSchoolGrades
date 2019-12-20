@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.highschoolgrades.R
 import com.example.highschoolgrades.models.Course
@@ -68,13 +69,12 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             intent.putExtra("Points", mCourses!![position].getPoints())
             val context = holder.itemView.context as Activity
 
-/*
             val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.itemView.context as Activity,
-                    holder.cardView, "editor_cardView")
+                    holder.cardView, "transition_cardView")
 
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle())
-*/
-            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
+
+//            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
         }
     }
 

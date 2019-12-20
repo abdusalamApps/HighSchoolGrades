@@ -16,7 +16,7 @@
         app:cardCornerRadius="15dp"
         app:cardElevation="30dp"
         tools:context=".ui.EditorActivity"
-        android:transitionName="editor_cardView"
+        android:transitionName="transition_cardView"
         >
 
         <LinearLayout

@@ -11,7 +11,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="15dp"
     app:cardElevation="5dp"
-    android:transitionName="editor_cardView"
+    android:transitionName="transition_cardView"
     android:id="@+id/listItemCardView"
     >
 
