@@ -188,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
                 meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
                 setupSpinner();
 
+                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
                 dialog.show();
 
             }
