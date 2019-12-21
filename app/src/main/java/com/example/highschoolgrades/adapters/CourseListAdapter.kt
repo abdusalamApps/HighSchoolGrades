@@ -3,9 +3,12 @@ package com.example.highschoolgrades.adapters
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.transition.ChangeBounds
+import android.transition.Transition
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityOptionsCompat
@@ -73,7 +76,6 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
                     holder.cardView, "transition_cardView")
 
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle())
-
 //            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
         }
     }
@@ -112,4 +114,5 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
     companion object {
         val EXISTING_COURSE_ACTIVITY_REQUEST_CODE = 2
     }
+
 }
