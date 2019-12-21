@@ -1,17 +1,18 @@
 package com.example.highschoolgrades.adapters
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.transition.ChangeBounds
 import android.transition.Transition
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.highschoolgrades.R
 import com.example.highschoolgrades.models.Course
@@ -72,8 +73,20 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             intent.putExtra("Points", mCourses!![position].getPoints())
             val context = holder.itemView.context as Activity
 
-            val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.itemView.context as Activity,
-                    holder.cardView, "transition_cardView")
+            val cardView: View = holder.cardView
+            val pair = Pair.create(cardView, "transition_cardView")
+
+            val textView: View = holder.courseTextView
+            val coursePair = Pair.create(textView, "transition_course")
+
+            val gradeView: View = holder.gradeTextView
+            val gradePair = Pair.create(gradeView, "transition_grade")
+
+            val pointsView: View = holder.pointsTextView
+            val pointsPair=Pair.create(pointsView, "transition_points")
+
+            val activityOptionsCompat = ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity,
+                    pair, coursePair, gradePair, pointsPair)
 
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle())
 //            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)

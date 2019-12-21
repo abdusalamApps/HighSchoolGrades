@@ -32,6 +32,7 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             tools:text="A"
+            android:transitionName="transition_grade"
             />
 
         <LinearLayout
@@ -40,7 +41,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:transitionName="transition_course"
+            >
 
             <TextView
                 android:id="@+id/course_tv"
@@ -63,6 +66,7 @@
                 android:fontFamily="@font/segoeui"
                 android:letterSpacing="0.0892857143"
                 tools:text="100"
+                android:transitionName="transition_points"
 
                 />
 

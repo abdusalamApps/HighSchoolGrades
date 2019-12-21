@@ -80,7 +80,7 @@
                     tools:text="Some text"
                     android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
-                    android:transitionName="gradeTextView"
+                    android:transitionName="transition_course"
                     android:textStyle="bold"
 
                     />
@@ -115,7 +115,7 @@
                     android:drawSelectorOnTop="true"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-
+                    android:transitionName="transition_grade"
                     >
 
                 </Spinner>
@@ -149,7 +149,9 @@
                     android:layout_alignParentEnd="true"
                     android:drawSelectorOnTop="true"
                     android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingBottom="16dp"
+                    android:transitionName="transition_points"
+                    >
 
                 </androidx.appcompat.widget.AppCompatSpinner>
 
