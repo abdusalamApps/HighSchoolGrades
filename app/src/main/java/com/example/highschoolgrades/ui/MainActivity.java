@@ -200,27 +200,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditorActivity.class);
 
-/*
-                ActivityOptionsCompat activityOptionsCompat =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, fab, "editor_cardView");
-*/
-
                 startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-                View dialogLayout = inflater.inflate(R.layout.activity_editor, null);
-                builder.setView(dialogLayout);
-                final AlertDialog dialog = builder.create();
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                TextView confirmTV = dialogLayout.findViewById(R.id.confirmBtn_tv);
-                confirmTV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();*/
             }
         });
 
