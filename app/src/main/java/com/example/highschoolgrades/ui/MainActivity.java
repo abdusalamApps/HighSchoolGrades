@@ -39,18 +39,15 @@ public class MainActivity extends AppCompatActivity {
     public static final int NEW_COURSE_ACTIVITY_REQUEST_CODE = 1;
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private RecyclerView coursesRv;
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
     private FloatingActionButton fab;
-    private TextView comparisonSumBtn;
-    private TextView meritVardeTV;
-    private Spinner meriterSpinner;
-    private TextView comparisonSumTV;
-    private TextView pointsSumTV;
-    private TextView gradesValuesTV;
-    private TextView courseCountTV;
     private double sum = 1.0;
+
+    private RecyclerView coursesRv;
+    private TextView comparisonSumBtn, meritVardeTV, comparisonSumTV,
+            pointsSumTV, gradesValuesTV, courseCountTV;
+    private Spinner meriterSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,15 +93,6 @@ public class MainActivity extends AppCompatActivity {
                     sum = aDouble;
                 }
                 comparisonSumBtn.setText(df.format(sum));
-            }
-        });
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
-
-                startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -201,6 +189,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void startEditorActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+        startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
+    }
 
     private void setupSpinner() {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.meriter_spinner_array, android.R.layout.simple_spinner_item);
