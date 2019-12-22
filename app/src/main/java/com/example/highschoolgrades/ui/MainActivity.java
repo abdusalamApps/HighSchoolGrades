@@ -1,5 +1,6 @@
 package com.example.highschoolgrades.ui;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -130,7 +132,12 @@ public class MainActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.result_dialog, null);
         builder.setView(dialogView);
         final AlertDialog dialog = builder.create();
+
         TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
+        TextView optionsTV = dialogView.findViewById(R.id.options_tv);
+
+        final CardView cardView = dialogView.findViewById(R.id.dialog_cardView);
+
         closeTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,6 +148,20 @@ public class MainActivity extends AppCompatActivity {
         if (window != null) {
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
+
+        optionsTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                        MainActivity.this,
+                        cardView,
+                        getString(R.string.transition_options)
+                );
+                startActivity(intent, options.toBundle());
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
 
         meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
         meritVardeTV = dialogView.findViewById(R.id.meritvarde_tv);
