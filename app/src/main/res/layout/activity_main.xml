@@ -93,10 +93,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:onClick="startEditorActivity"
-            android:src="@drawable/ic_add_white_24dp"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@android:color/white"
             android:transitionName="editor_cardView"
             app:layout_anchor="@+id/courses_rv"
-            app:layout_anchorGravity="end|bottom" />
+            app:layout_anchorGravity="end|bottom"
+            />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

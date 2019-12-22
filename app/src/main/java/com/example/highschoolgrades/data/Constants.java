@@ -1,8 +1,5 @@
 package com.example.highschoolgrades.data;
 
-import android.util.Pair;
-import android.view.View;
-
 import com.example.highschoolgrades.models.Course;
 
 public class Constants {

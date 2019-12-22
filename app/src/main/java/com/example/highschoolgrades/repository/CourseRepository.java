@@ -5,9 +5,9 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.highschoolgrades.models.Course;
 import com.example.highschoolgrades.database.CourseDao;
 import com.example.highschoolgrades.database.CourseRoomDatabase;
+import com.example.highschoolgrades.models.Course;
 
 import java.util.List;
 

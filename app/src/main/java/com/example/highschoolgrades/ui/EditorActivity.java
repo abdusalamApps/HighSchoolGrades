@@ -1,10 +1,8 @@
 package com.example.highschoolgrades.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,10 +10,11 @@ import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ScrollView;
-import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.highschoolgrades.R;
 
@@ -27,7 +26,7 @@ public class EditorActivity extends AppCompatActivity {
     private Spinner gradeSpinner, pointsSpinner;
     private double mGrade = 0;
     private double mPoints = 0;
-    private ScrollView scrollView;
+    private CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,25 @@ public class EditorActivity extends AppCompatActivity {
         courseInput.setAdapter(autoCompleteAdapter());
         populateViews();
 
+        cardView.setVisibility(View.INVISIBLE);
+        cardView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+                // get the center for the clipping circle
+                int cx = view.getWidth() / 2;
+                int cy = view.getHeight() / 2;
+
+                // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0f, finalRadius);
+                // make the view visible and start the animation
+                view.setVisibility(View.VISIBLE);
+                anim.start();
+
+            }
+        });
     }
 
     private void findViews() {
@@ -49,7 +67,7 @@ public class EditorActivity extends AppCompatActivity {
         courseInput = findViewById(R.id.course_input);
         gradeSpinner = findViewById(R.id.grade_spinner);
         pointsSpinner = findViewById(R.id.points_spinner);
-        scrollView = findViewById(R.id.editor_scrollView);
+        cardView = findViewById(R.id.editor_cardView);
     }
 
     private void setupSpinner(final int spinnerId, Spinner spinner) {
@@ -129,8 +147,34 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public void close(View view) {
+        // get the center for the clipping circle
+        int cx = cardView.getWidth() / 2;
+        int cy = cardView.getHeight() / 2;
+
+        // get the initial radius for the clipping circle
+        float initialRadius = (float) Math.hypot(cx, cy);
+
+        // create the animation (the final radius is zero)
+        Animator anim = ViewAnimationUtils.createCircularReveal(cardView, cx, cy, initialRadius, 0f);
+
+        // make the view invisible when the animation is done
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                cardView.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        // start the animation
+        anim.start();
+
         finishAfterTransition();
+
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
     }
+
 
     private void populateViews() {
         //        if we are coming from an existing item then put course name the existing course name
@@ -165,5 +209,32 @@ public class EditorActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        // get the center for the clipping circle
+        int cx = cardView.getWidth() / 2;
+        int cy = cardView.getHeight() / 2;
+
+        // get the initial radius for the clipping circle
+        float initialRadius = (float) Math.hypot(cx, cy);
+
+        // create the animation (the final radius is zero)
+        Animator anim = ViewAnimationUtils.createCircularReveal(cardView, cx, cy, initialRadius, 0f);
+
+        // make the view invisible when the animation is done
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                cardView.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        // start the animation
+        anim.start();
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

@@ -4,13 +4,10 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.transition.ChangeBounds
-import android.transition.Transition
 import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -88,7 +85,9 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             val activityOptionsCompat = ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity,
                     pair, coursePair, gradePair, pointsPair)
 
-            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE, activityOptionsCompat.toBundle())
+            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
+            context.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
 //            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
         }
     }

@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class AutoCompleteTextInputEditText extends AppCompatAutoCompleteTextView {
+public class  AutoCompleteTextInputEditText extends AppCompatAutoCompleteTextView {
     public AutoCompleteTextInputEditText(Context context) {
         super(context);
     }

@@ -1,15 +1,5 @@
 package com.example.highschoolgrades.ui;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -24,11 +14,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.highschoolgrades.models.Course;
-import com.example.highschoolgrades.adapters.CourseListAdapter;
-import com.example.highschoolgrades.viewmodels.CourseViewModel;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.highschoolgrades.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.highschoolgrades.adapters.CourseListAdapter;
+import com.example.highschoolgrades.models.Course;
+import com.example.highschoolgrades.viewmodels.CourseViewModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     private CourseListAdapter adapter;
     private CourseViewModel mCourseViewModel;
-    private FloatingActionButton fab;
     private double sum = 1.0;
 
     private RecyclerView coursesRv;
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         /*Store the Course to be able to restore it*/
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.custom_dialog, null);
+        View dialogLayout = inflater.inflate(R.layout.delete_dialog, null);
         builder.setView(dialogLayout);
         final AlertDialog dialog = builder.create();
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -192,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
     public void startEditorActivity(View view) {
         Intent intent = new Intent(MainActivity.this, EditorActivity.class);
         startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void setupSpinner() {
@@ -241,10 +240,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void findViews() {
         coursesRv = findViewById(R.id.courses_rv);
-        fab = findViewById(R.id.fab);
         comparisonSumBtn = findViewById(R.id.comparisonSum_btn);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
