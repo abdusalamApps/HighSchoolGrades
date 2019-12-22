@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
     public void showResultDialog(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_result, null);
+        View dialogView = inflater.inflate(R.layout.result_dialog, null);
         builder.setView(dialogView);
         final AlertDialog dialog = builder.create();
         TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
