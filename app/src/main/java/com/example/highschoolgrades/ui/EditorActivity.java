@@ -2,13 +2,18 @@ package com.example.highschoolgrades.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ScrollView;
+import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,91 +22,34 @@ import com.example.highschoolgrades.R;
 public class EditorActivity extends AppCompatActivity {
 
     private static final String TAG = EditorActivity.class.getCanonicalName();
-    private TextView closeTV, deleteButtonTv, confirmButtonTv;
+    private TextView confirmButtonTv;
     private AutoCompleteTextInputEditText courseInput;
     private Spinner gradeSpinner, pointsSpinner;
     private double mGrade = 0;
     private double mPoints = 0;
-
-
-    private void findViews() {
-        closeTV = findViewById(R.id.close_tb_iv);
-        confirmButtonTv = findViewById(R.id.confirmBtn_tv);
-        courseInput = findViewById(R.id.course_input);
-        gradeSpinner = findViewById(R.id.grade_spinner);
-        pointsSpinner = findViewById(R.id.points_spinner);
-    }
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        // Make activity fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         findViews();
         setupSpinner(R.id.grade_spinner, gradeSpinner);
         setupSpinner(R.id.points_spinner, pointsSpinner);
+        courseInput.setAdapter(autoCompleteAdapter());
+        populateViews();
 
-        String[] courses = getResources().getStringArray(R.array.courses_autoComplete);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
-        courseInput.setAdapter(adapter);
+    }
 
-//        if we are coming from an existing item then put course name the existing course name
-        if (getIntent().hasExtra("CourseId")) {
-            courseInput.setText(getIntent().getStringExtra("Course"));
-            confirmButtonTv.setText("UPDATE");
-//            Figuring out the grade and selecting the right option on gradeSpinner
-            double grade = getIntent().getDoubleExtra("Grade", 0);
-            if (grade == 20.0) {
-                gradeSpinner.setSelection(0);
-            } else if (grade == 17.5) {
-                gradeSpinner.setSelection(1);
-            } else if (grade == 15.0) {
-                gradeSpinner.setSelection(2);
-            } else if (grade == 12.5) {
-                gradeSpinner.setSelection(3);
-            } else if (grade == 10.0) {
-                gradeSpinner.setSelection(4);
-            } else {
-                gradeSpinner.setSelection(5);
-            }
-
-//            Figuring out the points and selecting the right option on pointsSpinner
-            double points = getIntent().getDoubleExtra("Points", 0);
-            if (points == 100.0) {
-                pointsSpinner.setSelection(0);
-            } else if (points == 50) {
-                pointsSpinner.setSelection(1);
-            } else {
-                pointsSpinner.setSelection(2);
-            }
-
-        }
-            confirmButtonTv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent replyIntent = new Intent();
-                    if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
-                        setResult(RESULT_CANCELED, replyIntent);
-                    } else {
-                        if (getIntent().hasExtra("CourseId")) {
-                            replyIntent.putExtra("id", getIntent().getIntExtra("CourseId", -1));
-                        }
-                        replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
-                        replyIntent.putExtra(getString(R.string.grade), mGrade);
-                        replyIntent.putExtra(getString(R.string.points), mPoints);
-                        setResult(RESULT_OK, replyIntent);
-                    }
-                    finishAfterTransition();
-                }
-            });
-
-        closeTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+    private void findViews() {
+        confirmButtonTv = findViewById(R.id.confirmBtn_tv);
+        courseInput = findViewById(R.id.course_input);
+        gradeSpinner = findViewById(R.id.grade_spinner);
+        pointsSpinner = findViewById(R.id.points_spinner);
+        scrollView = findViewById(R.id.editor_scrollView);
     }
 
     private void setupSpinner(final int spinnerId, Spinner spinner) {
@@ -157,5 +105,65 @@ public class EditorActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private ArrayAdapter<String> autoCompleteAdapter() {
+        String[] courses = getResources().getStringArray(R.array.courses_autoComplete);
+        return new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+    }
+
+    public void confirmCourse(View view) {
+        Intent replyIntent = new Intent();
+        if (TextUtils.isEmpty(courseInput.getText().toString().trim())) {
+            setResult(RESULT_CANCELED, replyIntent);
+        } else {
+            if (getIntent().hasExtra("CourseId")) {
+                replyIntent.putExtra("id", getIntent().getIntExtra("CourseId", -1));
+            }
+            replyIntent.putExtra(getString(R.string.Course), courseInput.getText().toString().trim());
+            replyIntent.putExtra(getString(R.string.grade), mGrade);
+            replyIntent.putExtra(getString(R.string.points), mPoints);
+            setResult(RESULT_OK, replyIntent);
+        }
+        finishAfterTransition();
+    }
+
+    public void close(View view) {
+        finishAfterTransition();
+    }
+
+    private void populateViews() {
+        //        if we are coming from an existing item then put course name the existing course name
+        if (getIntent().hasExtra("CourseId")) {
+            courseInput.setText(getIntent().getStringExtra("Course"));
+            confirmButtonTv.setText("UPDATE");
+//            Figuring out the grade and selecting the right option on gradeSpinner
+            double grade = getIntent().getDoubleExtra("Grade", 0);
+            if (grade == 20.0) {
+                gradeSpinner.setSelection(0);
+            } else if (grade == 17.5) {
+                gradeSpinner.setSelection(1);
+            } else if (grade == 15.0) {
+                gradeSpinner.setSelection(2);
+            } else if (grade == 12.5) {
+                gradeSpinner.setSelection(3);
+            } else if (grade == 10.0) {
+                gradeSpinner.setSelection(4);
+            } else {
+                gradeSpinner.setSelection(5);
+            }
+
+//            Figuring out the points and selecting the right option on pointsSpinner
+            double points = getIntent().getDoubleExtra("Points", 0);
+            if (points == 100.0) {
+                pointsSpinner.setSelection(0);
+            } else if (points == 50) {
+                pointsSpinner.setSelection(1);
+            } else {
+                pointsSpinner.setSelection(2);
+            }
+
+        }
+
     }
 }

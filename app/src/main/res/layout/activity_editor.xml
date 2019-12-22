@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    android:id="@+id/editor_scrollView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,6 +42,7 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/ic_x_circle"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="close"
                     />
                 <!--<TextView
                     android:id="@+id/done_tb_iv"
@@ -193,6 +195,7 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/segoeuib"
                     android:letterSpacing="0.0892857143"
+                    android:onClick="confirmCourse"
                     />
 
             </LinearLayout>
