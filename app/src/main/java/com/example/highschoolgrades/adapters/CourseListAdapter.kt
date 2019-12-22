@@ -35,27 +35,33 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             holder.courseTextView.text = current.course
             holder.pointsTextView.text = current.getPoints().toString()
 
-
             val gradeDouble = current.getGrade()
             var gradeString = ""
-            if (gradeDouble == 20.0) {
-                gradeString = "A"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_a)
-            } else if (gradeDouble == 17.5) {
-                gradeString = "B"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_b)
-            } else if (gradeDouble == 15.0) {
-                gradeString = "C"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_c)
-            } else if (gradeDouble == 12.5) {
-                gradeString = "D"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_d)
-            } else if (gradeDouble == 10.0) {
-                gradeString = "E"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_e)
-            } else {
-                gradeString = "F"
-                holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_f)
+            when (gradeDouble) {
+                20.0 -> {
+                    gradeString = "A"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_a)
+                }
+                17.5 -> {
+                    gradeString = "B"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_b)
+                }
+                15.0 -> {
+                    gradeString = "C"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_c)
+                }
+                12.5 -> {
+                    gradeString = "D"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_d)
+                }
+                10.0 -> {
+                    gradeString = "E"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_e)
+                }
+                else -> {
+                    gradeString = "F"
+                    holder.gradeTextView.background = holder.itemView.context.getDrawable(R.drawable.rounded_icon_f)
+                }
             }
             holder.gradeTextView.text = gradeString
         } else {
