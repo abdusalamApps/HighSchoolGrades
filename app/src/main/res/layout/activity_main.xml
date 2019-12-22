@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
-    android:orientation="vertical"
-    android:background="#4B276F"
     android:layout_gravity="center"
+    android:background="#4B276F"
     android:gravity="center_horizontal"
-    >
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
 
     <!--<com.google.android.material.button.MaterialButton
         android:id="@+id/comparisonSum_btn"
@@ -31,54 +30,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="@color/colorAccent"
         android:layout_marginBottom="8dp"
-        app:cardElevation="0dp"
-        >
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:onClick="showResultDialog"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="#fff"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/comparison_sum"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/segoeuib"
                 android:letterSpacing="0.0892857143"
-                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="@string/comparison_sum"
                 android:textAllCaps="true"
-                />
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/comparisonSum_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="#fff"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                tools:text="16.35"
-                android:fontFamily="@font/segoeuib"
-                android:letterSpacing="0.1892857143"
                 android:background="@drawable/comparison_sum_button_background"
+                android:fontFamily="@font/segoeuib"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                />
+                android:letterSpacing="0.1892857143"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:textColor="#fff"
+                tools:text="16.35" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/courses_rv"
@@ -94,9 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:src="@drawable/ic_add_white_24dp"
+            android:transitionName="editor_cardView"
             app:layout_anchor="@+id/courses_rv"
             app:layout_anchorGravity="end|bottom"
-            android:transitionName="editor_cardView"
 
             />
 

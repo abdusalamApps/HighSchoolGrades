@@ -50,22 +50,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView pointsSumTV;
     private TextView gradesValuesTV;
     private TextView courseCountTV;
-    private double sum;
-
-    void findViews() {
-        coursesRv = findViewById(R.id.courses_rv);
-        fab = findViewById(R.id.fab);
-        comparisonSumBtn = findViewById(R.id.comparisonSum_btn);
-    }
+    private double sum = 1.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Make activity fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         findViews();
-
-        sum = 1.0;
 
         adapter = new CourseListAdapter(this);
         coursesRv.setAdapter(adapter);
@@ -82,38 +75,16 @@ public class MainActivity extends AppCompatActivity {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            public boolean onMove(@NonNull RecyclerView recyclerView,
+                                  @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                final Course course = adapter.getCourseAt(viewHolder.getAdapterPosition());
-                mCourseViewModel.deleteCourse(course);
-                /*Store the Course to be able to restore it*/
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-                View dialogLayout = inflater.inflate(R.layout.custom_dialog, null);
-                builder.setView(dialogLayout);
-                final AlertDialog dialog = builder.create();
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                TextView closeTV = dialogLayout.findViewById(R.id.dialog_close_tv);
-                closeTV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                TextView restoreTV = dialogLayout.findViewById(R.id.dialog_restore_tv);
-                restoreTV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mCourseViewModel.insert(course);
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                                 int direction) {
+                showDeleteDialog(viewHolder);
             }
         }).attachToRecyclerView(coursesRv);
 
@@ -128,73 +99,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        comparisonSumBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, ResultActivity.class));
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.activity_result, null);
-                builder.setView(dialogView);
-                final AlertDialog dialog = builder.create();
-                TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
-                closeTV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                Window window = dialog.getWindow();
-                if (window != null) {
-                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                }
-
-                meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
-                meritVardeTV = dialogView.findViewById(R.id.meritvarde_tv);
-                comparisonSumTV = dialogView.findViewById(R.id.comparison_sum_tv);
-                mCourseViewModel.getComparisonSum().observe(MainActivity.this, new Observer<Double>() {
-                    @Override
-                    public void onChanged(Double aDouble) {
-                        DecimalFormat df = new DecimalFormat("##.##");
-                        comparisonSumTV.setText(df.format(aDouble));
-                    }
-                });
-
-                pointsSumTV = dialogView.findViewById(R.id.pointsSum_tv);
-
-                mCourseViewModel.getPointsSum().observe(MainActivity.this, new Observer<Double>() {
-                    @Override
-                    public void onChanged(Double aDouble) {
-                        pointsSumTV.setText(String.valueOf(aDouble));
-                    }
-                });
-
-                gradesValuesTV = dialogView.findViewById(R.id.grades_value_tv);
-                mCourseViewModel.getGradesValues().observe(MainActivity.this, new Observer<Double>() {
-                    @Override
-                    public void onChanged(Double aDouble) {
-                        gradesValuesTV.setText(String.valueOf(aDouble));
-                    }
-                });
-
-                courseCountTV = dialogView.findViewById(R.id.courseCount_tv);
-                mCourseViewModel.getSize().observe(MainActivity.this, new Observer<Integer>() {
-                    @Override
-                    public void onChanged(Integer integer) {
-                        courseCountTV.setText(String.valueOf(integer));
-                    }
-                });
-
-                meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
-                setupSpinner();
-
-                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
-                dialog.show();
-
-            }
-        });
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,6 +109,150 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void showDeleteDialog(RecyclerView.ViewHolder viewHolder) {
+        final Course course = adapter.getCourseAt(viewHolder.getAdapterPosition());
+        mCourseViewModel.deleteCourse(course);
+        /*Store the Course to be able to restore it*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.custom_dialog, null);
+        builder.setView(dialogLayout);
+        final AlertDialog dialog = builder.create();
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView closeTV = dialogLayout.findViewById(R.id.dialog_close_tv);
+        closeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        TextView restoreTV = dialogLayout.findViewById(R.id.dialog_restore_tv);
+        restoreTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCourseViewModel.insert(course);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void showResultDialog(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.activity_result, null);
+        builder.setView(dialogView);
+        final AlertDialog dialog = builder.create();
+        TextView closeTV = dialogView.findViewById(R.id.closeResult_tv);
+        closeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
+        meritVardeTV = dialogView.findViewById(R.id.meritvarde_tv);
+        comparisonSumTV = dialogView.findViewById(R.id.comparison_sum_tv);
+        mCourseViewModel.getComparisonSum().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                DecimalFormat df = new DecimalFormat("##.##");
+                comparisonSumTV.setText(df.format(aDouble));
+            }
+        });
+
+        pointsSumTV = dialogView.findViewById(R.id.pointsSum_tv);
+
+        mCourseViewModel.getPointsSum().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                pointsSumTV.setText(String.valueOf(aDouble));
+            }
+        });
+
+        gradesValuesTV = dialogView.findViewById(R.id.grades_value_tv);
+        mCourseViewModel.getGradesValues().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                gradesValuesTV.setText(String.valueOf(aDouble));
+            }
+        });
+
+        courseCountTV = dialogView.findViewById(R.id.courseCount_tv);
+        mCourseViewModel.getSize().observe(MainActivity.this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                courseCountTV.setText(String.valueOf(integer));
+            }
+        });
+
+        meriterSpinner = dialogView.findViewById(R.id.meriter_spinner);
+        setupSpinner();
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        dialog.show();
+
+    }
+
+
+    private void setupSpinner() {
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.meriter_spinner_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        meriterSpinner.setAdapter(adapter);
+
+        meriterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                switch (position) {
+                    case 0:
+                        meritVardeTV.setText(String.valueOf(formatComparisonSum()));
+                        break;
+                    case 1:
+                        meritVardeTV.setText(String.valueOf(0.5 + formatComparisonSum()));
+                        break;
+                    case 2:
+                        meritVardeTV.setText(String.valueOf(1.0 + formatComparisonSum()));
+                        break;
+                    case 3:
+                        meritVardeTV.setText(String.valueOf(1.5 + formatComparisonSum()));
+                        break;
+                    case 4:
+                        meritVardeTV.setText(String.valueOf(2.0 + formatComparisonSum()));
+                        break;
+                    case 5:
+                        meritVardeTV.setText(String.valueOf(2.5 + formatComparisonSum()));
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private Double formatComparisonSum() {
+        String s = comparisonSumTV.getText().toString();
+        if (s.contains(",")) {
+            s = s.replace(",", ".");
+        }
+        return Double.parseDouble(s);
+    }
+
+    private void findViews() {
+        coursesRv = findViewById(R.id.courses_rv);
+        fab = findViewById(R.id.fab);
+        comparisonSumBtn = findViewById(R.id.comparisonSum_btn);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -256,48 +304,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setupSpinner() {
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.meriter_spinner_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        meriterSpinner.setAdapter(adapter);
 
-        meriterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                switch (position) {
-                    case 0:
-                        meritVardeTV.setText(String.valueOf(formatComparisonSum()));
-                        break;
-                    case 1:
-                        meritVardeTV.setText(String.valueOf(0.5 + formatComparisonSum()));
-                        break;
-                    case 2:
-                        meritVardeTV.setText(String.valueOf(1.0 + formatComparisonSum()));
-                        break;
-                    case 3:
-                        meritVardeTV.setText(String.valueOf(1.5 + formatComparisonSum()));
-                        break;
-                    case 4:
-                        meritVardeTV.setText(String.valueOf(2.0 + formatComparisonSum()));
-                        break;
-                    case 5:
-                        meritVardeTV.setText(String.valueOf(2.5 + formatComparisonSum()));
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-    }
-
-    private Double formatComparisonSum() {
-        String s = comparisonSumTV.getText().toString();
-        if (s.contains(",")){
-            s = s.replace(",", ".");
-        }
-        return Double.parseDouble(s);
-    }
 }
