@@ -41,7 +41,6 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:transitionName="transition_course"
             >
 
             <TextView
@@ -54,7 +53,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="Sammhällskunskap 1b"
-                android:transitionName="gradeTextView"
+                android:transitionName="transition_course"
                 />
 
 
