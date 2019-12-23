@@ -2,6 +2,8 @@ package com.example.highschoolgrades.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -42,24 +44,25 @@ public class EditorActivity extends AppCompatActivity {
         populateViews();
 
         cardView.setVisibility(View.INVISIBLE);
-        cardView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        cardView.post(new Runnable() {
             @Override
-            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+            public void run() {
                 // get the center for the clipping circle
-                int cx = view.getWidth() / 2;
-                int cy = view.getHeight() / 2;
+                int cx = cardView.getWidth() / 2;
+                int cy = cardView.getHeight() / 2;
 
                 // get the final radius for the clipping circle
                 float finalRadius = (float) Math.hypot(cx, cy);
 
                 // create the animator for this view (the start radius is zero)
-                Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0f, finalRadius);
+                Animator anim = ViewAnimationUtils.createCircularReveal(cardView, cx, cy, 0f, finalRadius);
                 // make the view visible and start the animation
-                view.setVisibility(View.VISIBLE);
+                cardView.setVisibility(View.VISIBLE);
                 anim.start();
 
             }
         });
+
     }
 
     private void findViews() {
