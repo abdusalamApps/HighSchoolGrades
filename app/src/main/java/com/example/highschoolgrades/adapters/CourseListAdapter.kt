@@ -1,5 +1,9 @@
 package com.example.highschoolgrades.adapters
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
@@ -19,6 +23,8 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
 
     private val mInflater: LayoutInflater
     private var mCourses: List<Course>? = null
+
+
 
     init {
         mInflater = LayoutInflater.from(context)
@@ -76,27 +82,29 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             intent.putExtra("Points", mCourses!![position].getPoints())
             val context = holder.itemView.context as Activity
 
-            val cardView: View = holder.cardView
-            val pair = Pair.create(cardView, "transition_cardView")
+            val scalex = PropertyValuesHolder.ofFloat(View.SCALE_X, 1.025f)
+            val scaley = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.025f)
+            val animator: ObjectAnimator =ObjectAnimator.ofPropertyValuesHolder(holder.cardView, scalex, scaley)
 
-            val textView: View = holder.courseTextView
-            val coursePair = Pair.create(textView, "transition_course")
+            animator.duration = 200
+            animator.repeatCount = 1
+            animator.repeatMode = ObjectAnimator.REVERSE
+            animator.start()
 
-            val gradeView: View = holder.gradeTextView
-            val gradePair = Pair.create(gradeView, "transition_grade")
+          /*  animator.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
 
-            val pointsView: View = holder.pointsTextView
-            val pointsPair=Pair.create(pointsView, "transition_points")
+                }
+            })
+*/
 
-            val activityOptionsCompat = ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity,
-                    pair, coursePair, gradePair, pointsPair)
 
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
-            context.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-
-//            context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
         }
     }
+
 
     fun setCourses(courses: List<Course>) {
         mCourses = courses
@@ -131,6 +139,7 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
 
     companion object {
         val EXISTING_COURSE_ACTIVITY_REQUEST_CODE = 2
+
     }
 
 }

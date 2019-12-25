@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        showResults();
+
     }
 
     private void showDeleteDialog(RecyclerView.ViewHolder viewHolder) {
@@ -124,6 +126,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void showResults() {
+        TextView closeTV = findViewById(R.id.closeResult_tv);
+        TextView optionsTV = findViewById(R.id.options_tv);
+
+        final CardView cardView = findViewById(R.id.dialog_cardView);
+
+
+        meriterSpinner = findViewById(R.id.meriter_spinner);
+        meritVardeTV = findViewById(R.id.meritvarde_tv);
+        comparisonSumTV = findViewById(R.id.comparison_sum_tv);
+        mCourseViewModel.getComparisonSum().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                DecimalFormat df = new DecimalFormat("##.##");
+                comparisonSumTV.setText(df.format(aDouble));
+            }
+        });
+
+        pointsSumTV = findViewById(R.id.pointsSum_tv);
+
+        mCourseViewModel.getPointsSum().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                pointsSumTV.setText(String.valueOf(aDouble));
+            }
+        });
+
+        gradesValuesTV = findViewById(R.id.grades_value_tv);
+        mCourseViewModel.getGradesValues().observe(MainActivity.this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                gradesValuesTV.setText(String.valueOf(aDouble));
+            }
+        });
+
+        courseCountTV = findViewById(R.id.courseCount_tv);
+        mCourseViewModel.getSize().observe(MainActivity.this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                courseCountTV.setText(String.valueOf(integer));
+            }
+        });
+
+        meriterSpinner = findViewById(R.id.meriter_spinner);
+        setupSpinner();
+
     }
 
     public void showResultDialog(View view) {

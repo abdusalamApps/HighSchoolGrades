@@ -1,104 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="#4B276F"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    app:layoutDescription="@xml/activity_main_animations">
 
-    <!--<com.google.android.material.button.MaterialButton
-        android:id="@+id/comparisonSum_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"
-        app:cornerRadius="15dp"
-        android:text="@string/comparison_sum"
-        android:textColor="#fff"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        />-->
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:onClick="showResultDialog"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:fontFamily="@font/segoeuib"
-                android:letterSpacing="0.0892857143"
-                android:paddingStart="16dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="12dp"
-                android:text="@string/comparison_sum"
-                android:textAllCaps="true"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/comparisonSum_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/comparison_sum_button_background"
-                android:fontFamily="@font/segoeuib"
-                android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                android:letterSpacing="0.1892857143"
-                android:paddingStart="16dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="12dp"
-                android:textColor="#fff"
-                tools:text="16.35" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#4B276F"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/courses_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/course_list_item">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+        <!--<com.google.android.material.button.MaterialButton
+            android:id="@+id/comparisonSum_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:onClick="startEditorActivity"
-            android:src="@android:drawable/ic_input_add"
-            android:tint="@android:color/white"
-            android:transitionName="editor_cardView"
-            app:layout_anchor="@+id/courses_rv"
-            app:layout_anchorGravity="end|bottom"
-            />
+            android:backgroundTint="@color/colorAccent"
+            app:cornerRadius="15dp"
+            android:text="@string/comparison_sum"
+            android:textColor="#fff"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            />-->
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:fontFamily="@font/segoeuib"
+                    android:letterSpacing="0.0892857143"
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp"
+                    android:text="@string/comparison_sum"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/comparisonSum_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/comparison_sum_button_background"
+                    android:fontFamily="@font/segoeuib"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:letterSpacing="0.1892857143"
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="#fff"
+                    tools:text="16.35" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/courses_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/course_list_item">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:onClick="startEditorActivity"
+                android:src="@android:drawable/ic_input_add"
+                android:tint="@android:color/white"
+                android:transitionName="editor_cardView"
+                app:layout_anchor="@+id/courses_rv"
+                app:layout_anchorGravity="end|bottom" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/activity_main_dialog"
+        layout="@layout/result_dialog"
+        />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
