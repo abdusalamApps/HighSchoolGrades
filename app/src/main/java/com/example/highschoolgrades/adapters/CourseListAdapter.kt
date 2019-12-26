@@ -82,25 +82,6 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             intent.putExtra("Points", mCourses!![position].getPoints())
             val context = holder.itemView.context as Activity
 
-            val scalex = PropertyValuesHolder.ofFloat(View.SCALE_X, 1.025f)
-            val scaley = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.025f)
-            val animator: ObjectAnimator =ObjectAnimator.ofPropertyValuesHolder(holder.cardView, scalex, scaley)
-
-            animator.duration = 200
-            animator.repeatCount = 1
-            animator.repeatMode = ObjectAnimator.REVERSE
-            animator.start()
-
-          /*  animator.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
-                    super.onAnimationEnd(animation)
-                    context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
-
-                }
-            })
-*/
-
-
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
         }
     }
