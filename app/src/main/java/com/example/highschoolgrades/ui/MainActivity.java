@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -98,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
 
         showResults();
 
+        CardView appBarCard = findViewById(R.id.appbar_card);
+
+
+    }
+
+    public void blockingViewClickHandler(View view) {
+        Log.i(TAG, "blockingViewClickHandler: blocking view clicked");
     }
 
     private void showDeleteDialog(RecyclerView.ViewHolder viewHolder) {
