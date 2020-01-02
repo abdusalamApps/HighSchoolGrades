@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -49,10 +49,9 @@
                 android:id="@+id/course_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/segoeui"
                 android:letterSpacing="0.0792857143"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Sammhällskunskap 1b"
                 android:transitionName="transition_course"
@@ -63,7 +62,6 @@
                 android:id="@+id/points_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/segoeui"
                 android:letterSpacing="0.0892857143"
                 tools:text="100"
                 android:transitionName="transition_points"
@@ -73,5 +71,4 @@
         </LinearLayout>
     </LinearLayout>
 
-
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

@@ -104,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void blockingViewClickHandler(View view) {
-        Log.i(TAG, "blockingViewClickHandler: blocking view clicked");
-    }
 
     private void showDeleteDialog(RecyclerView.ViewHolder viewHolder) {
         final Course course = adapter.getCourseAt(viewHolder.getAdapterPosition());
@@ -269,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
     public void startEditorActivity(View view) {
         Intent intent = new Intent(MainActivity.this, EditorActivity.class);
         startActivityForResult(intent, NEW_COURSE_ACTIVITY_REQUEST_CODE);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(R.anim.editor_in, R.anim.main_out);
     }
 
     private void setupSpinner() {

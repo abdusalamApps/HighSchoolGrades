@@ -43,6 +43,7 @@ public class EditorActivity extends AppCompatActivity {
         courseInput.setAdapter(autoCompleteAdapter());
         populateViews();
 
+/*
         cardView.setVisibility(View.INVISIBLE);
         cardView.post(new Runnable() {
             @Override
@@ -62,6 +63,7 @@ public class EditorActivity extends AppCompatActivity {
 
             }
         });
+*/
 
     }
 
@@ -150,31 +152,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public void close(View view) {
-        // get the center for the clipping circle
-        int cx = cardView.getWidth() / 2;
-        int cy = cardView.getHeight() / 2;
-
-        // get the initial radius for the clipping circle
-        float initialRadius = (float) Math.hypot(cx, cy);
-
-        // create the animation (the final radius is zero)
-        Animator anim = ViewAnimationUtils.createCircularReveal(cardView, cx, cy, initialRadius, 0f);
-
-        // make the view invisible when the animation is done
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                cardView.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        // start the animation
-        anim.start();
-
-        finishAfterTransition();
-
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        onBackPressed();
 
     }
 
@@ -216,7 +194,7 @@ public class EditorActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // get the center for the clipping circle
+        /*// get the center for the clipping circle
         int cx = cardView.getWidth() / 2;
         int cy = cardView.getHeight() / 2;
 
@@ -238,6 +216,9 @@ public class EditorActivity extends AppCompatActivity {
         // start the animation
         anim.start();
         super.onBackPressed();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);*/
+
+        super.onBackPressed();
+        overridePendingTransition(R.anim.main_in, R.anim.editor_out);
     }
 }

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4B276F">
+    android:background="@color/colorPrimaryDark">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/editor_cardView"
@@ -74,19 +74,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:completionThreshold="1"
+                    android:fontFamily="@font/acme"
                     android:inputType="textPersonName|textAutoComplete"
+                    android:letterSpacing="0.0892857143"
                     android:maxLines="1"
                     android:paddingStart="12dp"
                     android:paddingTop="16dp"
                     android:paddingEnd="12dp"
                     android:paddingBottom="16dp"
-                    tools:text="Some text"
-                    android:fontFamily="@font/segoeui"
-                    android:letterSpacing="0.0892857143"
-                    android:transitionName="transition_course"
                     android:textStyle="bold"
+                    android:transitionName="transition_course"
 
-                    />
+                    tools:text="Some text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
@@ -102,9 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/grade"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
-
                     />
 
                 <Spinner
@@ -138,7 +135,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/points"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     />
 
@@ -194,7 +190,6 @@
                     android:textColor="#fff"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/segoeuib"
                     android:letterSpacing="0.0892857143"
                     android:onClick="confirmCourse"
                     />

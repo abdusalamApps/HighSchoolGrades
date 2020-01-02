@@ -83,6 +83,7 @@ class CourseListAdapter internal constructor(context: Context) : RecyclerView.Ad
             val context = holder.itemView.context as Activity
 
             context.startActivityForResult(intent, EXISTING_COURSE_ACTIVITY_REQUEST_CODE)
+            context.overridePendingTransition(R.anim.editor_in, R.anim.main_out)
         }
     }
 

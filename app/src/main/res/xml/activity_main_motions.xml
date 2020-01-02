@@ -84,6 +84,10 @@
             android:layout_height="0dp"
             android:alpha="0"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_card"
              />
 
     </ConstraintSet>
@@ -104,8 +108,12 @@
             android:id="@+id/blocking_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:alpha="0"
+            android:alpha="0.0"
             android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_card"
              />
 
     </ConstraintSet>
@@ -127,8 +135,12 @@
             android:id="@+id/blocking_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:alpha="0"
+            android:alpha="0.0"
             android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_card"
              />
 
     </ConstraintSet>

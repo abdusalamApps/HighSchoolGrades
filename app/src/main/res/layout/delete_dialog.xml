@@ -22,7 +22,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/segoeui"
                 android:letterSpacing="0.0892857143"
                 android:padding="8dp"
                 android:text="@string/course_deleted"
@@ -36,7 +35,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/segoeui"
                 android:letterSpacing="0.0892857143"
                 android:paddingStart="42dp"
                 android:paddingTop="16dp"

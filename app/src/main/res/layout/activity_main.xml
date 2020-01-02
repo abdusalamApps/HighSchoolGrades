@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/activity_main_motions"
     android:background="@color/colorPrimaryDark"
-    >
+    app:layoutDescription="@xml/activity_main_motions">
 
     <!-- Appbar, RecyclerView and FloatingActionButton -->
 
@@ -34,7 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:fontFamily="@font/segoeuib"
                 android:letterSpacing="0.0892857143"
                 android:paddingStart="16dp"
                 android:paddingTop="12dp"
@@ -50,7 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/comparison_sum_button_background"
-                android:fontFamily="@font/segoeuib"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:letterSpacing="0.1892857143"
                 android:paddingStart="16dp"
@@ -75,6 +72,13 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <View
+        android:id="@+id/blocking_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/black"
+         />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -89,18 +93,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <View
-        android:id="@+id/blocking_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/black"
-        android:onClick="blockingViewClickHandler"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_card"
-        />
 
     <!-- Dialog Layout -->
     <androidx.cardview.widget.CardView
@@ -150,7 +142,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/courseCount_tv"
-                    android:fontFamily="@font/segoeui"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0892857143"
                     android:text="@string/course_count"
@@ -162,7 +153,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     android:textColor="#707070"
                     android:textSize="16sp"
@@ -184,7 +174,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/grades_value_tv"
-                    android:fontFamily="@font/segoeui"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0892857143"
                     android:text="@string/grades_value"
@@ -196,7 +185,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     android:textColor="#707070"
                     android:textSize="16sp"
@@ -220,7 +208,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/pointsSum_tv"
-                    android:fontFamily="@font/segoeui"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0892857143"
                     android:text="@string/points_sum"
@@ -232,7 +219,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     android:textColor="#707070"
                     android:textSize="16sp"
@@ -254,7 +240,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/comparison_sum_tv"
-                    android:fontFamily="@font/segoeui"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0892857143"
                     android:text="@string/comparison_sum"
@@ -266,7 +251,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/segoeui"
                     android:letterSpacing="0.0892857143"
                     android:textColor="#707070"
                     android:textSize="16sp"
@@ -289,7 +273,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_gravity="center"
                     android:layout_toStartOf="@+id/meriter_spinner"
-                    android:fontFamily="@font/segoeui"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0892857143"
                     android:text="@string/extras"
@@ -330,7 +313,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_gravity="center"
                     android:layout_toStartOf="@+id/meritvarde_tv"
-                    android:fontFamily="@font/segoeuib"
                     android:gravity="center_vertical"
                     android:letterSpacing="0.0992857143"
                     android:text="@string/rating"
@@ -342,7 +324,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/segoeuib"
                     android:gravity="center_vertical|end"
                     android:letterSpacing="0.0892857143"
                     android:textColor="@color/colorPrimaryDark"
